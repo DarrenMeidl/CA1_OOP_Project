@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ActivityDurationAscendingComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ActivityDistanceAscendingComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ActivityDistanceDescendingComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ActivityDurationDescendingComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ActivityTypeComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Activities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActivityDurationAscendingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActivityDurationAscendingComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CaloriesBurnedDescendingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CaloriesBurnedDescendingComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainApp.java" afterDir="false" />
     </list>
@@ -96,16 +102,5 @@
     <MESSAGE value="Imported Activity class code from old repo" />
     <MESSAGE value="Imported CaloriesBurnedDescendingComparator class code from old repo" />
     <option name="LAST_COMMIT_MESSAGE" value="Imported CaloriesBurnedDescendingComparator class code from old repo" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/MainApp.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -25,5 +25,41 @@ public class MainApp {
         System.out.println("AFTER 'sortByActivityDurationAscending'");
         test1.printList();
         System.out.println("");
+
+        //TESTING sortByActivityDurationDescending()
+        System.out.println("BEFORE 'sortByActivityDurationDescending'");
+        test1.printList();
+        test1.sortByActivityDurationDescending();
+        System.out.println("");
+        System.out.println("AFTER 'sortByActivityDurationDescending'");
+        test1.printList();
+        System.out.println("");
+
+        //TESTING sortByActivityDistanceAscending()
+        System.out.println("BEFORE 'sortByActivityDistanceAscending'");
+        test1.printList();
+        test1.sortByActivityDistanceAscending();
+        System.out.println("");
+        System.out.println("AFTER 'sortByActivityDistanceAscending'");
+        test1.printList();
+        System.out.println("");
+
+        //TESTING sortByActivityDistanceDescending()
+        System.out.println("BEFORE 'sortByActivityDistanceDescending'");
+        test1.printList();
+        test1.sortByActivityDistanceDescending();
+        System.out.println("");
+        System.out.println("AFTER 'sortByActivityDistanceDescending'");
+        test1.printList();
+        System.out.println("");
+
+        //TESTING sortByActivityType()
+        System.out.println("BEFORE 'sortByActivityType'");
+        test1.printList();
+        test1.sortByActivityType();
+        System.out.println("");
+        System.out.println("AFTER 'sortByActivityType'");
+        test1.printList();
+        System.out.println("");
     }
 }

@@ -4,14 +4,14 @@ public class Activity implements Comparable<Activity>{
     private double duration;
     private String date;
     private double distance;
-    private double avgHeartRate;
+    private int avgHeartRate;
 
     private double intensity;
     private String intensityType;
     private double caloriesBurned;
 
     //Full Constructor - Darren
-    public Activity(String type, double duration, String date, double distance, double avgHeartRate, double intensity, String intensityType, double caloriesBurned) {
+    public Activity(String type, double duration, String date, double distance, int avgHeartRate, double intensity, String intensityType, double caloriesBurned) {
         this.type = type;
         this.duration = duration;
         this.date = date;
@@ -22,7 +22,7 @@ public class Activity implements Comparable<Activity>{
         this.caloriesBurned = caloriesBurned;
     }
     //Semi-Full Constructor - Darren
-    public Activity(String type, double duration, String date, double distance, double avgHeartRate) {
+    public Activity(String type, double duration, String date, double distance, int avgHeartRate) {
         this.type = type;
         this.duration = duration;
         this.date = date;
@@ -78,7 +78,7 @@ public class Activity implements Comparable<Activity>{
     public void setDistance(double distance) {
         this.distance = distance;
     }
-    public void setAvgHeartRate(double avgHeartRate) {
+    public void setAvgHeartRate(int avgHeartRate) {
         this.avgHeartRate = avgHeartRate;
     }
     public void setIntensity(double intensity) {
@@ -92,9 +92,9 @@ public class Activity implements Comparable<Activity>{
     }
 
 
-    //Calculates energy expended - Darren
-    public void calculateEnergyExpended(){
-
+    //Calculates energy expended by calculating KM per hour - Tomas
+    public void calculateEnergyExpended(double distance, double duration){
+        double energyExpended = distance/(duration/60);
     }
     //Calculates calories burned by multiplying intensity by duration - Darren
     public void calculateCaloriesBurned(double intensity, double duration){
@@ -124,39 +124,39 @@ public class Activity implements Comparable<Activity>{
         }
         //If the activity type is "Running" go through these checks - Darren
         if (type == "Running"){
-            //If intensity is X, set msg String to X - Darren
-            if (intensity == 0.5){
+            //If intensity is lower than X, set the msg to X - Tomas
+            if (intensity < 4){
                 msg = "Very Light";
             }
-            else if (intensity == 0){
+            else if (intensity >=4 && intensity < 8){
                 msg = "Light";
             }
-            else if (intensity == 0){
+            else if (intensity >= 8 && intensity < 12){
                 msg = "Moderate";
             }
-            else if (intensity == 0){
+            else if (intensity >= 12 && intensity < 16){
                 msg = "Vigorous";
             }
-            else if (intensity == 0){
+            else if (intensity >= 16 && intensity <= 24){
                 msg = "Very Vigorous";
             }
         }
         //If the activity type is "Cycling" go through these checks - Darren
         if (type == "Cycling"){
-            //If intensity is X, set msg String to X - Darren
+            //If intensity is lower than X, set the msg to X - Tomas
             if (intensity < 8){
                 msg = "Very Light";
             }
-            else if (intensity == 8){
+            else if (intensity >= 8 && intensity <= 16){
                 msg = "Light";
             }
-            else if (intensity == 0){
+            else if (intensity >= 17 && intensity < 25){
                 msg = "Moderate";
             }
-            else if (intensity == 0){
+            else if (intensity >= 25 && intensity < 33){
                 msg = "Vigorous";
             }
-            else if (intensity == 0){
+            else if (intensity >= 33 && intensity <= 40){
                 msg = "Very Vigorous";
             }
         }
