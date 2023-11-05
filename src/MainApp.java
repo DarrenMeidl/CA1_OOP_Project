@@ -5,15 +5,25 @@ public class MainApp {
 
         test1.add(new Activity());
         test1.add(new Activity("Swimming", 1, "03/11/2023", 50, 97));
-        test1.add(new Activity("Swimming", 1, "03/11/2023", 50, 97, 50, "Light", 90));
-        test1.add(new Activity("Swimming", 1, "03/11/2023", 50, 97, 50, "Light", 100));
+        test1.add(new Activity("Swimming", 11, "03/11/2023", 50, 97, 50, "Light", 90));
+        test1.add(new Activity("Swimming", 7, "03/11/2023", 50, 97, 50, "Light", 100));
 
-        System.out.println("BEFORE");
+        //TESTING sortByCaloriesBurnedDescending()
+        System.out.println("BEFORE 'sortByCaloriesBurnedDescending'");
         test1.printList();
         test1.sortByCaloriesBurnedDescending();
         System.out.println("");
-        System.out.println("AFTER");
+        System.out.println("AFTER 'sortByCaloriesBurnedDescending'");
         test1.printList();
-        
+        System.out.println("");
+
+        //TESTING sortByActivityDurationAscending()
+        System.out.println("BEFORE 'sortByActivityDurationAscending'");
+        test1.printList();
+        test1.sortByActivityDurationAscending();
+        System.out.println("");
+        System.out.println("AFTER 'sortByActivityDurationAscending'");
+        test1.printList();
+        System.out.println("");
     }
 }

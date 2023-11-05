@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="Imported Activity class code from old repo">
-      <change afterPath="$PROJECT_DIR$/src/CaloriesBurnedDescendingComparator.java" afterDir="false" />
+    <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ActivityDurationAscendingComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Activities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CaloriesBurnedDescendingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CaloriesBurnedDescendingComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,14 +79,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699201691495</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Imported CaloriesBurnedDescendingComparator class code from old repo">
+      <option name="closed" value="true" />
+      <created>1699201818632</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699201818632</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Imported Activities class code from old repo" />
     <MESSAGE value="Imported Activity class code from old repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Imported Activity class code from old repo" />
+    <MESSAGE value="Imported CaloriesBurnedDescendingComparator class code from old repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Imported CaloriesBurnedDescendingComparator class code from old repo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -23,6 +23,9 @@ public class Activities {
     public void sortByCaloriesBurnedDescending(){
         Collections.sort(activityList, new CaloriesBurnedDescendingComparator());
     }
+    public void sortByActivityDurationAscending(){
+        Collections.sort(activityList, new ActivityDurationAscendingComparator());
+    }
 
 
 }
