@@ -33,6 +33,19 @@ public class Activities {
         Collections.sort(activityList, new ActivityDurationDescendingComparator());
     }
 
+    public void sortByActivityDateAscending(){
+        Collections.sort(activityList, new Comparator<Activity>() { //Sorts by using Anonymous Inner Class - Tomas
+            @Override
+            public int compare(Activity act1, Activity act2) {
+                return act1.getDate().compareTo((act2).getDate());
+            }
+        });
+    }
+
+    public void sortByActivityDateDescending(){
+        Collections.sort(activityList, new ActivityDateDescendingComparator());
+    }
+
     public void sortByActivityType() {
         Collections.sort(activityList, new Comparator<Activity>() { //Sorts by using Anonymous Inner Class - Tomas
             @Override
