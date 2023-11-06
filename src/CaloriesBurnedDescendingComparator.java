@@ -3,7 +3,7 @@ public class CaloriesBurnedDescendingComparator implements Comparator<Activity>{
     //Overrides compare method
     @Override
     public int compare(Activity act1, Activity act2){ //Takes in two Activity objects
-        return Double.compare(act1.getCaloriesBurned(), act2.getCaloriesBurned()); //This version provides more error free (due to rounding)
+        return Double.compare(act2.getCaloriesBurned(), act1.getCaloriesBurned()); //This version provides more error free (due to rounding)
                                                                                     // and more effective form
 
         //Darren Version

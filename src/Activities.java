@@ -25,14 +25,16 @@ public class Activities {
     public void sortByCaloriesBurnedDescending(){
         Collections.sort(activityList, new CaloriesBurnedDescendingComparator());
     }
+
+    //ACTIVITY DURATION
     public void sortByActivityDurationAscending(){
         Collections.sort(activityList, new ActivityDurationAscendingComparator());
     }
-
     public void sortByActivityDurationDescending(){
         Collections.sort(activityList, new ActivityDurationDescendingComparator());
     }
 
+    //DATE
     public void sortByActivityDateAscending(){
         Collections.sort(activityList, new Comparator<Activity>() { //Sorts by using Anonymous Inner Class - Tomas
             @Override
@@ -41,7 +43,6 @@ public class Activities {
             }
         });
     }
-
     public void sortByActivityDateDescending(){
         Collections.sort(activityList, new ActivityDateDescendingComparator());
     }
@@ -55,10 +56,10 @@ public class Activities {
         });
     }
 
+    //DISTANCE
     public void sortByActivityDistanceAscending(){
         activityList.sort((Activity act1, Activity act2) -> Double.compare(act1.getDistance(), act2.getDistance())); //Sorts using lambda where arraylist implements the list interface
     }
-
     public void sortByActivityDistanceDescending(){
         activityList.sort((act1, act2) -> Double.compare(act2.getDistance(), act1.getDistance())); //Using the same logic as previous lambda comparator, but descending order
     }
