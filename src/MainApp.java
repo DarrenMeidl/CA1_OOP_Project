@@ -28,103 +28,93 @@ public class MainApp {
                 double distance = Double.parseDouble(instances[3]);
                 int avgHeartRate = Integer.parseInt(instances[4].trim()); //trims it because of unwanted space of the string before parsing as integer
 
-                //Use format specifiers to print the values
-                System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code
-                        type, date, duration, distance, avgHeartRate);
+                /*//Use format specifiers to print the values
+                System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code (File output)
+                        type, date, duration, distance, avgHeartRate);*/
 
 
                 Activity activity = new Activity(type, duration, date, distance, avgHeartRate); //Create instance of activities from the file
-                //calculateEnergyExpended(distance, duration);
+                activity.calculateEnergyExpended(distance, duration);
+                activity.calculateCaloriesBurned(activity.getIntensity(), duration);
                 activities.add(activity); //Add the instance to the container
 
             }
 
+            //TESTING sortByCaloriesBurnedDescending()
+            System.out.println("BEFORE 'sortByCaloriesBurnedDescending'");
+            activities.printList();
+            activities.sortByCaloriesBurnedDescending();
+            System.out.println("");
+            System.out.println("AFTER 'sortByCaloriesBurnedDescending'");
+            activities.printList();
+            System.out.println("");
+
+            //TESTING sortByActivityDurationAscending()
+            System.out.println("BEFORE 'sortByActivityDurationAscending'");
+            activities.printList();
+            activities.sortByActivityDurationAscending();
+            System.out.println("");
+            System.out.println("AFTER 'sortByActivityDurationAscending'");
+            activities.printList();
+            System.out.println("");
+
+            //TESTING sortByActivityDurationDescending()
+            System.out.println("BEFORE 'sortByActivityDurationDescending'");
+            activities.printList();
+            activities.sortByActivityDurationDescending();
+            System.out.println("");
+            System.out.println("AFTER 'sortByActivityDurationDescending'");
+            activities.printList();
+            System.out.println("");
+
+            //TESTING sortByActivityDistanceAscending()
+            System.out.println("BEFORE 'sortByActivityDistanceAscending'");
+            activities.printList();
+            activities.sortByActivityDistanceAscending();
+            System.out.println("");
+            System.out.println("AFTER 'sortByActivityDistanceAscending'");
+            activities.printList();
+            System.out.println("");
+
+            //TESTING sortByActivityDistanceDescending()
+            System.out.println("BEFORE 'sortByActivityDistanceDescending'");
+            activities.printList();
+            activities.sortByActivityDistanceDescending();
+            System.out.println("");
+            System.out.println("AFTER 'sortByActivityDistanceDescending'");
+            activities.printList();
+            System.out.println("");
+
+            //TESTING sortByActivityType()
+            System.out.println("BEFORE 'sortByActivityType'");
+            activities.printList();
+            activities.sortByActivityType();
+            System.out.println("");
+            System.out.println("AFTER 'sortByActivityType'");
+            activities.printList();
+            System.out.println("");
+
+            //TESTING sortByActivityDateAscending()
+            System.out.println("BEFORE 'sortByActivityDateAscending'");
+            activities.printList();
+            activities.sortByActivityDateAscending();
+            System.out.println("");
+            System.out.println("AFTER 'sortByActivityDateAscending'");
+            activities.printList();
+            System.out.println("");
+
+            //TESTING sortByActivityDateDescending()
+            System.out.println("BEFORE 'sortByActivityDateDescending'");
+            activities.printList();
+            activities.sortByActivityDateDescending();
+            System.out.println("");
+            System.out.println("AFTER 'sortByActivityDateDescending'");
+            activities.printList();
+            System.out.println("");
+
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + fileName); //Prints out when file was not found
-
-
-            activities.sortByActivityDurationAscending();
-            activities.printList();
-
-        /*Activities test1 = new Activities(); //New container class instance - Darren
-
-        test1.add(new Activity());
-        test1.add(new Activity("Swimming", 1, LocalDate.parse("0000-07-03"), 150, 112));
-        test1.add(new Activity("Running", 11, LocalDate.parse("2021-03-01"), 72, 97, 80, "Very Light", 1200));
-        test1.add(new Activity("Swimming", 0, LocalDate.parse("2023-01-17"), 89, 102, 50, "Light", 1002));
-        test1.add(new Activity("Cycling", 45, LocalDate.parse("2021-01-09"), 35, 107, 63, "Moderate", 950));
-        test1.add(new Activity("Running", 8, LocalDate.parse("2022-11-01"), 14, 85, 78, "Vigorous", 883));
-        //TESTING sortByCaloriesBurnedDescending()
-        System.out.println("BEFORE 'sortByCaloriesBurnedDescending'");
-        test1.printList();
-        test1.sortByCaloriesBurnedDescending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByCaloriesBurnedDescending'");
-        test1.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDurationAscending()
-        System.out.println("BEFORE 'sortByActivityDurationAscending'");
-        test1.printList();
-        test1.sortByActivityDurationAscending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDurationAscending'");
-        test1.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDurationDescending()
-        System.out.println("BEFORE 'sortByActivityDurationDescending'");
-        test1.printList();
-        test1.sortByActivityDurationDescending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDurationDescending'");
-        test1.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDistanceAscending()
-        System.out.println("BEFORE 'sortByActivityDistanceAscending'");
-        test1.printList();
-        test1.sortByActivityDistanceAscending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDistanceAscending'");
-        test1.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDistanceDescending()
-        System.out.println("BEFORE 'sortByActivityDistanceDescending'");
-        test1.printList();
-        test1.sortByActivityDistanceDescending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDistanceDescending'");
-        test1.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityType()
-        System.out.println("BEFORE 'sortByActivityType'");
-        test1.printList();
-        test1.sortByActivityType();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityType'");
-        test1.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDateAscending()
-        System.out.println("BEFORE 'sortByActivityDateAscending'");
-        test1.printList();
-        test1.sortByActivityDateAscending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDateAscending'");
-        test1.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDateDescending()
-        System.out.println("BEFORE 'sortByActivityDateDescending'");
-        test1.printList();
-        test1.sortByActivityDateDescending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDateDescending'");
-        test1.printList();
-        System.out.println("");*/
         }
     }
 }
