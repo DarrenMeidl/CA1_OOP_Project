@@ -13,7 +13,7 @@ public class Activity implements Comparable<Activity>{
     private double caloriesBurned;
 
     //Full Constructor - Darren
-    public Activity(String type, double duration, String date, double distance, int avgHeartRate, double intensity, String intensityType, double caloriesBurned) {
+    public Activity(String type, double duration, LocalDate date, double distance, int avgHeartRate, double intensity, String intensityType, double caloriesBurned) {
         this.type = type;
         this.duration = duration;
         this.date = date;
@@ -24,7 +24,7 @@ public class Activity implements Comparable<Activity>{
         this.caloriesBurned = caloriesBurned;
     }
     //Semi-Full Constructor - Darren
-    public Activity(String type, double duration, String date, double distance, int avgHeartRate) {
+    public Activity(String type, double duration, LocalDate date, double distance, int avgHeartRate) {
         this.type = type;
         this.duration = duration;
         this.date = date;
@@ -35,7 +35,7 @@ public class Activity implements Comparable<Activity>{
     public Activity() {
         this.type = "type";
         this.duration = 0;
-        this.date = "00/00/00";
+        this.date = LocalDate.parse("0000-01-01");
         this.distance = 0;
         this.avgHeartRate = 0;
     }
@@ -47,7 +47,7 @@ public class Activity implements Comparable<Activity>{
     public double getDuration() {
         return duration;
     }
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
     public double getDistance() {
@@ -74,7 +74,7 @@ public class Activity implements Comparable<Activity>{
     public void setDuration(double duration) {
         this.duration = duration;
     }
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
     public void setDistance(double distance) {

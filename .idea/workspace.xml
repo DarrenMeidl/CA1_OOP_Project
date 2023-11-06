@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActivityDurationAscendingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActivityDurationAscendingComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,5 +113,15 @@
     <MESSAGE value="Imported CaloriesBurnedDescendingComparator class code from old repo" />
     <MESSAGE value="4 New Comparators with different types&#10;Adjustments and Improvements in code clarity and effectiveness" />
     <option name="LAST_COMMIT_MESSAGE" value="4 New Comparators with different types&#10;Adjustments and Improvements in code clarity and effectiveness" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.time.format.DateTimeParseException" package="java.time.format" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

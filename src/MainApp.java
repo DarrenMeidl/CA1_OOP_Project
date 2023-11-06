@@ -1,10 +1,11 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 
 //MainApp Class
 public class MainApp {
     public static void main(String[] args) {
 
-        String fileName = "activity_data_10.csv"; //Reference to the cvs file
+        /*String fileName = "activity_data_10.csv"; //Reference to the cvs file
         Scanner sc = new Scanner(fileName);
         {
             if(sc.hasNextLine())
@@ -24,16 +25,16 @@ public class MainApp {
                 // Use format specifiers to print the values
                 System.out.printf("ActivityType: %s, Date: %d, Duration: %.2f, Distance: %.2f, AvgHeartRate: %d%n",
                         ActivityType, Date, Duration, Distance, AvgHeartRate);
-            }
+            }*/
 
-        /*Activities test1 = new Activities(); //New container class instance - Darren
+        Activities test1 = new Activities(); //New container class instance - Darren
 
         test1.add(new Activity());
-        test1.add(new Activity("Swimming", 1, "27/09/2023", 150, 112));
-        test1.add(new Activity("Running", 11, "01/12/2022", 72, 97, 80, "Very Light", 1200));
-        test1.add(new Activity("Swimming", 0, "09/07/2022", 89, 102, 50, "Light", 1002));
-        test1.add(new Activity("Cycling", 45, "13/06/2023", 35, 107, 63, "Moderate", 950));
-        test1.add(new Activity("Running", 8, "19/04/2021", 14, 85, 78, "Vigorous", 883));
+        test1.add(new Activity("Swimming", 1, LocalDate.parse("0000-07-03"), 150, 112));
+        test1.add(new Activity("Running", 11, LocalDate.parse("2021-03-01"), 72, 97, 80, "Very Light", 1200));
+        test1.add(new Activity("Swimming", 0, LocalDate.parse("2023-01-17"), 89, 102, 50, "Light", 1002));
+        test1.add(new Activity("Cycling", 45, LocalDate.parse("2021-01-09"), 35, 107, 63, "Moderate", 950));
+        test1.add(new Activity("Running", 8, LocalDate.parse("2022-11-01"), 14, 85, 78, "Vigorous", 883));
         //TESTING sortByCaloriesBurnedDescending()
         System.out.println("BEFORE 'sortByCaloriesBurnedDescending'");
         test1.printList();
@@ -104,6 +105,6 @@ public class MainApp {
         System.out.println("");
         System.out.println("AFTER 'sortByActivityDateDescending'");
         test1.printList();
-        System.out.println("");*/
+        System.out.println("");
     }
 }
