@@ -10,7 +10,7 @@ public class MainApp {
         //User's input fields
         String inputTest1 = "cycling";
         double inputTest2 = 5;
-        String inputTest3 = "Moderate";
+        String inputTest3 = "Vigorous";
         double inputTest4 = 10;
 
         Activities activities = new Activities(); //Creates container for activities

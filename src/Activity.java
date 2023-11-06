@@ -103,62 +103,62 @@ public class Activity implements Comparable<Activity>{
         this.caloriesBurned = intensity * duration;
     }
     //Calculates the Intensity type - Darren
-    public void calculateIntensityType(double intensity, String type){
+    public void calculateIntensityType(){
         String msg = "NO IFs WERE CALLED";
         //If the activity type is "Swimming" go through these checks - Darren
-        if (type == "Swimming"){
+        if (this.type == "Swimming"){
             //If intensity is X, set msg String to X - Darren
-            if (intensity == 0.5){
+            if (this.intensity == 0.5){
                 msg = "Very Light";
             }
-            else if (intensity == 1.25){
+            else if (this.intensity == 1.25){
                 msg = "Light";
             }
-            else if (intensity == 2){
+            else if (this.intensity == 2){
                 msg = "Moderate";
             }
-            else if (intensity == 2.75){
+            else if (this.intensity == 2.75){
                 msg = "Vigorous";
             }
-            else if (intensity == 3.5){
+            else if (this.intensity == 3.5){
                 msg = "Very Vigorous";
             }
         }
         //If the activity type is "Running" go through these checks - Darren
-        if (type == "Running"){
+        if (this.type == "Running"){
             //If intensity is lower than X, set the msg to X - Tomas
-            if (intensity < 4){
+            if (this.intensity < 4){
                 msg = "Very Light";
             }
-            else if (intensity >=4 && intensity < 8){
+            else if (this.intensity >=4 && this.intensity < 8){
                 msg = "Light";
             }
-            else if (intensity >= 8 && intensity < 12){
+            else if (this.intensity >= 8 && this.intensity < 12){
                 msg = "Moderate";
             }
-            else if (intensity >= 12 && intensity < 16){
+            else if (this.intensity >= 12 && this.intensity < 16){
                 msg = "Vigorous";
             }
-            else if (intensity >= 16 && intensity <= 24){
+            else if (this.intensity >= 16 && this.intensity <= 24){
                 msg = "Very Vigorous";
             }
         }
         //If the activity type is "Cycling" go through these checks - Darren
-        if (type == "Cycling"){
+        if (this.type == "Cycling"){
             //If intensity is lower than X, set the msg to X - Tomas
-            if (intensity < 8){
+            if (this.intensity < 8){
                 msg = "Very Light";
             }
-            else if (intensity >= 8 && intensity <= 16){
+            else if (this.intensity >= 8 && this.intensity <= 16){
                 msg = "Light";
             }
-            else if (intensity >= 17 && intensity < 25){
+            else if (this.intensity >= 17 && this.intensity < 25){
                 msg = "Moderate";
             }
-            else if (intensity >= 25 && intensity < 33){
+            else if (this.intensity >= 25 && this.intensity < 33){
                 msg = "Vigorous";
             }
-            else if (intensity >= 33 && intensity <= 40){
+            else if (this.intensity >= 33 && this.intensity <= 40){
                 msg = "Very Vigorous";
             }
         }

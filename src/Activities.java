@@ -89,6 +89,7 @@ public class Activities {
     public void viewByActivityIntensityType(String input){
         System.out.printf("%17s%17s%17s%17s%17s%17s\n", "ACTIVITY TYPE", "DURATION", "DATE", "DISTANCE", "AVG HEART RATE", "CALS BURNED");
         for (int i = 0; i < activityList.size(); i++){
+            activityList.get(i).calculateIntensityType();
             if (activityList.get(i).getIntensityType().equalsIgnoreCase(input)){ //If strings are the same, print the current activity object in arraylist - Darren
                 System.out.printf("%17s%17f%17s%17f%17f%17f\n",  activityList.get(i).getType(),activityList.get(i).getDuration(), activityList.get(i).getDate(), activityList.get(i).getDistance(), activityList.get(i).getAvgHeartRate(), activityList.get(i).getCaloriesBurned());
             }
