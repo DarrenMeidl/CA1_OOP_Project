@@ -12,5 +12,7 @@ public class ActivityDurationAscendingComparator implements Comparator<Activity>
         if (num1 < num2) return -1; // If num2 is bigger than num1, return negative
         if (num1 > num2) return 1; // If num2 is smaller than num1, return positive
         return 0; // Otherwise, return 0*/
+
+
     }
 }

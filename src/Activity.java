@@ -1,8 +1,10 @@
+import java.time.LocalDate;
+
 public class Activity implements Comparable<Activity>{
     //Fields - Darren
     private String type;
     private double duration;
-    private String date;
+    private LocalDate date;
     private double distance;
     private int avgHeartRate;
 

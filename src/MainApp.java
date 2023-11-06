@@ -1,7 +1,32 @@
+import java.util.Scanner;
+
 //MainApp Class
 public class MainApp {
     public static void main(String[] args) {
-        Activities test1 = new Activities(); //New container class instance - Darren
+
+        String fileName = "activity_data_10.csv"; //Reference to the cvs file
+        Scanner sc = new Scanner(fileName);
+        {
+            if(sc.hasNextLine())
+                sc.nextLine();   // read the header line containing column titles, but don't use it
+            // read one line at a time into a String, and parse the String into tokens (parts)
+            while (sc.hasNextLine())
+            {
+                String line = sc.nextLine();             // read full line ( delimited by a "\n" )
+                String [] instances = line.split(",");  // split line using a comma as the delimiter (separator)
+
+                String ActivityType = instances[0];  // extract first token/field from the tokens array (i.e. the name)
+                int Date = Integer.parseInt(instances[1]);  // e.g. Convert String "19" to int value 19
+                double Duration = Double.parseDouble(instances[2]);  // e.g. Convert String "1.82" to double 1.82
+                double Distance = Double.parseDouble(instances[3]);
+                int AvgHeartRate = Integer.parseInt(instances[4]);
+
+                // Use format specifiers to print the values
+                System.out.printf("ActivityType: %s, Date: %d, Duration: %.2f, Distance: %.2f, AvgHeartRate: %d%n",
+                        ActivityType, Date, Duration, Distance, AvgHeartRate);
+            }
+
+        /*Activities test1 = new Activities(); //New container class instance - Darren
 
         test1.add(new Activity());
         test1.add(new Activity("Swimming", 1, "27/09/2023", 150, 112));
@@ -79,6 +104,6 @@ public class MainApp {
         System.out.println("");
         System.out.println("AFTER 'sortByActivityDateDescending'");
         test1.printList();
-        System.out.println("");
+        System.out.println("");*/
     }
 }
