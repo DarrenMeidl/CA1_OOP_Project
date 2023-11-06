@@ -65,4 +65,44 @@ public class Activities {
     }
 
 
+    //VIEW SUBSET: ACTIVITY TYPE
+    public void viewByActivityType(String input){
+        System.out.printf("%17s%17s%17s%17s%17s%17s\n", "ACTIVITY TYPE", "DURATION", "DATE", "DISTANCE", "AVG HEART RATE", "CALS BURNED");
+        for (int i = 0; i < activityList.size(); i++){
+            if (activityList.get(i).getType().equalsIgnoreCase(input)){ //If strings are the same, print the current activity object in arraylist - Darren
+                System.out.printf("%17s%17f%17s%17f%17f%17f\n",  activityList.get(i).getType(),activityList.get(i).getDuration(), activityList.get(i).getDate(), activityList.get(i).getDistance(), activityList.get(i).getAvgHeartRate(), activityList.get(i).getCaloriesBurned());
+            }
+        }
+    }
+
+    //VIEW SUBSET: ABOVE MINIMUM ACTIVITY DISTANCE
+    public void viewByActivityDistance(double input){
+        System.out.printf("%17s%17s%17s%17s%17s%17s\n", "ACTIVITY TYPE", "DURATION", "DATE", "DISTANCE", "AVG HEART RATE", "CALS BURNED");
+        for (int i = 0; i < activityList.size(); i++){
+            if (activityList.get(i).getDistance() > input){ //If current object distance is greater than minimum input double, print the current activity object in arraylist - Darren
+                System.out.printf("%17s%17f%17s%17f%17f%17f\n",  activityList.get(i).getType(),activityList.get(i).getDuration(), activityList.get(i).getDate(), activityList.get(i).getDistance(), activityList.get(i).getAvgHeartRate(), activityList.get(i).getCaloriesBurned());
+            }
+        }
+    }
+
+    //VIEW SUBSET: ACTIVITY ENERGY EXPENDED TYPE
+    public void viewByActivityIntensityType(String input){
+        System.out.printf("%17s%17s%17s%17s%17s%17s\n", "ACTIVITY TYPE", "DURATION", "DATE", "DISTANCE", "AVG HEART RATE", "CALS BURNED");
+        for (int i = 0; i < activityList.size(); i++){
+            if (activityList.get(i).getIntensityType().equalsIgnoreCase(input)){ //If strings are the same, print the current activity object in arraylist - Darren
+                System.out.printf("%17s%17f%17s%17f%17f%17f\n",  activityList.get(i).getType(),activityList.get(i).getDuration(), activityList.get(i).getDate(), activityList.get(i).getDistance(), activityList.get(i).getAvgHeartRate(), activityList.get(i).getCaloriesBurned());
+            }
+        }
+    }
+
+    //VIEW SUBSET: ABOVE MINIMUM ACTIVITY DURATION
+    public void viewByActivityDuration(double input){
+        System.out.printf("%17s%17s%17s%17s%17s%17s\n", "ACTIVITY TYPE", "DURATION", "DATE", "DISTANCE", "AVG HEART RATE", "CALS BURNED");
+        for (int i = 0; i < activityList.size(); i++){
+            if (activityList.get(i).getDuration() > input){ //If current object duration is greater than minimum input double, print the current activity object in arraylist - Darren
+                System.out.printf("%17s%17f%17s%17f%17f%17f\n",  activityList.get(i).getType(),activityList.get(i).getDuration(), activityList.get(i).getDate(), activityList.get(i).getDistance(), activityList.get(i).getAvgHeartRate(), activityList.get(i).getCaloriesBurned());
+            }
+        }
+    }
+
 }

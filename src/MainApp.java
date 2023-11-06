@@ -7,6 +7,11 @@ import java.util.Scanner;
 //MainApp Class
 public class MainApp {
     public static void main(String[] args) {
+        //User's input fields
+        String inputTest1 = "cycling";
+        double inputTest2 = 5;
+        String inputTest3 = "Moderate";
+        double inputTest4 = 10;
 
         Activities activities = new Activities(); //Creates container for activities
 
@@ -39,6 +44,38 @@ public class MainApp {
                 activities.add(activity); //Add the instance to the container
 
             }
+
+            //TESTING viewByActivityType()
+            System.out.println("BEFORE 'viewByActivityType'");
+            activities.printList();
+            System.out.println("");
+            System.out.println("AFTER 'viewByActivityType'");
+            activities.viewByActivityType(inputTest1);
+            System.out.println("");
+
+            //TESTING viewByActivityDistance()
+            System.out.println("BEFORE 'viewByActivityDistance'");
+            activities.printList();
+            System.out.println("");
+            System.out.println("AFTER 'viewByActivityDistance'");
+            activities.viewByActivityDistance(inputTest2);
+            System.out.println("");
+
+            //TESTING viewByActivityIntensityType()
+            System.out.println("BEFORE 'viewByActivityIntensityType'");
+            activities.printList();
+            System.out.println("");
+            System.out.println("AFTER 'viewByActivityIntensityType'");
+            activities.viewByActivityIntensityType(inputTest3);
+            System.out.println("");
+
+            //TESTING viewByActivityDuration()
+            System.out.println("BEFORE 'viewByActivityDuration'");
+            activities.printList();
+            System.out.println("");
+            System.out.println("AFTER 'viewByActivityDuration'");
+            activities.viewByActivityDuration(inputTest4);
+            System.out.println("");
 
             //TESTING sortByCaloriesBurnedDescending()
             System.out.println("BEFORE 'sortByCaloriesBurnedDescending'");
