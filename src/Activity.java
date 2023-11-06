@@ -96,7 +96,7 @@ public class Activity implements Comparable<Activity>{
 
     //Calculates energy expended by calculating KM per hour - Tomas
     public void calculateEnergyExpended(double distance, double duration){
-        double energyExpended = distance/(duration/60);
+        double intensity = distance/(duration/60);
     }
     //Calculates calories burned by multiplying intensity by duration - Darren
     public void calculateCaloriesBurned(double intensity, double duration){

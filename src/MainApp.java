@@ -1,33 +1,52 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 //MainApp Class
 public class MainApp {
     public static void main(String[] args) {
 
-        /*String fileName = "activity_data_10.csv"; //Reference to the cvs file
-        Scanner sc = new Scanner(fileName);
-        {
-            if(sc.hasNextLine())
-                sc.nextLine();   // read the header line containing column titles, but don't use it
-            // read one line at a time into a String, and parse the String into tokens (parts)
-            while (sc.hasNextLine())
-            {
-                String line = sc.nextLine();             // read full line ( delimited by a "\n" )
-                String [] instances = line.split(",");  // split line using a comma as the delimiter (separator)
+        Activities activities = new Activities(); //Creates container for activities
 
-                String ActivityType = instances[0];  // extract first token/field from the tokens array (i.e. the name)
-                int Date = Integer.parseInt(instances[1]);  // e.g. Convert String "19" to int value 19
-                double Duration = Double.parseDouble(instances[2]);  // e.g. Convert String "1.82" to double 1.82
-                double Distance = Double.parseDouble(instances[3]);
-                int AvgHeartRate = Integer.parseInt(instances[4]);
+        String fileName = "activity_data_10.csv"; //Reference to the cvs file
+        File file = new File(fileName);
+        try (Scanner sc = new Scanner(file)) {
+            if (sc.hasNextLine()) {
+                sc.nextLine();   //"Consume" the header by reading it and not using it further
+            }
+            //Reads lines if there are any, makes them strings and creates string instances for each variable
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine();             //reads full line based on \n
+                String[] instances = line.split(",");  //setting comma as a separator in a line
 
-                // Use format specifiers to print the values
-                System.out.printf("ActivityType: %s, Date: %d, Duration: %.2f, Distance: %.2f, AvgHeartRate: %d%n",
-                        ActivityType, Date, Duration, Distance, AvgHeartRate);
-            }*/
+                String type = instances[0];  //Separating each instance of a string from the file into a variable for each row and column
+                //String date = instances[1];
+                LocalDate date = LocalDate.parse(instances[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));  //Formatting date as in the file, using trim to remove unwanted spaces
+                double duration = Double.parseDouble(instances[2]);
+                double distance = Double.parseDouble(instances[3]);
+                int avgHeartRate = Integer.parseInt(instances[4].trim()); //trims it because of unwanted space of the string before parsing as integer
 
-        Activities test1 = new Activities(); //New container class instance - Darren
+                //Use format specifiers to print the values
+                System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code
+                        type, date, duration, distance, avgHeartRate);
+
+
+                Activity activity = new Activity(type, duration, date, distance, avgHeartRate); //Create instance of activities from the file
+                //calculateEnergyExpended(distance, duration);
+                activities.add(activity); //Add the instance to the container
+
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + fileName); //Prints out when file was not found
+
+
+            activities.sortByActivityDurationAscending();
+            activities.printList();
+
+        /*Activities test1 = new Activities(); //New container class instance - Darren
 
         test1.add(new Activity());
         test1.add(new Activity("Swimming", 1, LocalDate.parse("0000-07-03"), 150, 112));
@@ -105,6 +124,7 @@ public class MainApp {
         System.out.println("");
         System.out.println("AFTER 'sortByActivityDateDescending'");
         test1.printList();
-        System.out.println("");
+        System.out.println("");*/
+        }
     }
 }
