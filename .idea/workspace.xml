@@ -8,6 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Activities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActivityDateDescendingComparator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActivityDistanceAscendingComparator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActivityDistanceDescendingComparator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActivityDurationAscendingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActivityDurationAscendingComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActivityDurationDescendingComparator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActivityTypeComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActivityTypeComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CaloriesBurnedDescendingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CaloriesBurnedDescendingComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +69,8 @@
       <workItem from="1699273445483" duration="2000000" />
       <workItem from="1699303020428" duration="2045000" />
       <workItem from="1699366948306" duration="3428000" />
+      <workItem from="1699384767967" duration="305000" />
+      <workItem from="1699386795071" duration="1804000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />

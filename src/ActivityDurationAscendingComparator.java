@@ -6,7 +6,7 @@ public class ActivityDurationAscendingComparator implements Comparator<Activity>
         return Double.compare(act1.getDuration(), act2.getDuration()); //This version provides more error free (due to rounding)
                                                                         // and more effective form
 
-        //Darren Version
+        //Darren's Version as an alternative version to this one
         /*double num1 = act1.getDuration(); //Assigns local field num1 to first object's duration
         double num2 = act2.getDuration(); //Assigns local field num2 to second object's duration
         if (num1 < num2) return -1; // If num2 is bigger than num1, return negative

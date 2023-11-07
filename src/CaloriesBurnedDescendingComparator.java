@@ -6,7 +6,7 @@ public class CaloriesBurnedDescendingComparator implements Comparator<Activity>{
         return Double.compare(act2.getCaloriesBurned(), act1.getCaloriesBurned()); //This version provides more error free (due to rounding)
                                                                                     // and more effective form
 
-        //Darren Version
+        //Darren's Version as an alternative version to this one
         /*double num1 = act1.getCaloriesBurned(); //Assigns local field num1 to first object's calories burned
         double num2 = act2.getCaloriesBurned(); //Assigns local field num2 to second object's calories burned
         if (num1 < num2) return 1; // If num2 is bigger than num1, return positive

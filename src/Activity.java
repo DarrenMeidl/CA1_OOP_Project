@@ -193,4 +193,9 @@ public class Activity implements Comparable<Activity>{
     public int compareTo(Activity other){
         return this.type.compareTo(other.type);
     }
+
+    //Static comparator
+    public static int compareDateDescending(Activity act1, Activity act2){
+        return act2.getDate().compareTo(act1.getDate());
+    }
 }

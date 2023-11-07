@@ -34,7 +34,8 @@ public class Activities {
         Collections.sort(activityList, new ActivityDurationAscendingComparator());
     }
     public void sortByActivityDurationDescending(){
-        Collections.sort(activityList, new ActivityDurationDescendingComparator());
+        Comparator<Activity> comparator = (act1, act2) -> Double.compare(act1.getDuration(), act2.getDuration()); //Lambda comparator with reverse helper
+        activityList.sort(comparator.reversed());
     }
     //SORT: ACTIVITY DATE
     public void sortByActivityDateAscending(){
@@ -46,18 +47,11 @@ public class Activities {
         });
     }
     public void sortByActivityDateDescending(){
-        Collections.sort(activityList, new ActivityDateDescendingComparator());
+        activityList.sort(Activity::compareDateDescending);
     }
     //SORT: ACTIVITY TYPE
     public void sortByActivityType() {
         Collections.sort(activityList, new ActivityTypeComparator());
-
-        /*Collections.sort(activityList, new Comparator<Activity>() { //Sorts by using Anonymous Inner Class - Tomas
-            @Override
-            public int compare(Activity act1, Activity act2) {
-                return act1.getType().compareTo(act2.getType());
-            }
-        });*/
     }
     //SORT: DISTANCE
     public void sortByActivityDistanceAscending(){
@@ -116,7 +110,7 @@ public class Activities {
         double totalSwimDistance = 0;
         double totalRunningDistance = 0;
         double totalCyclingDistance = 0;
-        double avgDistancecSwim = 0;
+        double avgDistanceSwim = 0;
         double avgDistanceRun = 0;
         double avgDistanceCycle = 0;
         int listSizeSwim = 0;
@@ -125,12 +119,12 @@ public class Activities {
 
         //Calculates Average for Swimming activities
         for (int i = 0; i < activityList.size(); i++) {
-            if (activityList.get(i).getType().equalsIgnoreCase("Swimming")) {
-                totalSwimDistance = (totalSwimDistance + activityList.get(i).getDistance());
-                listSizeSwim++;
+            if (activityList.get(i).getType().equalsIgnoreCase("Swimming")) { //Ignores capital letters when getting String
+                totalSwimDistance = (totalSwimDistance + activityList.get(i).getDistance()); //Gathers number from each instance from the for loop and calculates total
+                listSizeSwim++; //Calculates the number of instances in each activity
             }
         }
-        avgDistancecSwim = totalSwimDistance / listSizeSwim;
+        avgDistanceSwim = totalSwimDistance / listSizeSwim;
         //Calculates Average for Running activities
         for (int i = 0; i < activityList.size(); i++) {
             if (activityList.get(i).getType().equalsIgnoreCase("Running")) {
@@ -148,7 +142,7 @@ public class Activities {
         }
         avgDistanceCycle = totalCyclingDistance / listSizeCycle;
         //Prints results
-        System.out.printf("AVERAGE DISTANCE IN SWIMMING ACTIVITY IS: %.3f\n", avgDistancecSwim);
+        System.out.printf("AVERAGE DISTANCE IN SWIMMING ACTIVITY IS: %.3f\n", avgDistanceSwim);
         System.out.printf("AVERAGE DISTANCE IN RUNNING ACTIVITY IS: %.3f\n", avgDistanceRun);
         System.out.printf("AVERAGE DISTANCE IN CYCLING ACTIVITY IS: %.3f\n", avgDistanceCycle);
     }
@@ -166,7 +160,7 @@ public class Activities {
 
     //BINARY SEARCH METHOD
     public int binarySearchByActivityType(Activity key) { //Method for binary search which is called in the main app and requires a key to be found
-        Collections.sort(activityList); //Sorts arraylist by natural ordering - Darren
+        Collections.sort(activityList); //Sorts arraylist by natural ordering before the binary search - Darren
         return Collections.binarySearch(activityList, key, new ActivityTypeComparator()); //Binary search is searching through the activitylist, tries to find the key and uses the ActivityTypeComparator to compare it
     }
 

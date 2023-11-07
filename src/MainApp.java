@@ -25,15 +25,15 @@ public class MainApp {
             }
             //Reads lines if there are any, makes them strings and creates string instances for each variable
             while (sc.hasNextLine()) {
-                String line = sc.nextLine();             //reads full line based on \n
-                String[] instances = line.split(",");  //setting comma as a separator in a line
+                String line = sc.nextLine();             //Reads full line based on \n
+                String[] instances = line.split(",");  //Setting comma as a separator in a line
 
                 String type = instances[0];  //Separating each instance of a string from the file into a variable for each row and column
                 //String date = instances[1];
                 LocalDate date = LocalDate.parse(instances[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));  //Formatting date as in the file, using trim to remove unwanted spaces
                 double duration = Double.parseDouble(instances[2]);
                 double distance = Double.parseDouble(instances[3]);
-                int avgHeartRate = Integer.parseInt(instances[4].trim()); //trims it because of unwanted space of the string before parsing as integer
+                int avgHeartRate = Integer.parseInt(instances[4].trim()); //Trims it because of unwanted space of the string before parsing as integer
 
                 /*//Use format specifiers to print the values
                 System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code (File output)
@@ -68,7 +68,7 @@ public class MainApp {
             activities.calculateAverageDistancePerActivity();
             System.out.println("");
 
-            /*//TESTING viewByActivityType()
+            //TESTING viewByActivityType()
             System.out.println("BEFORE 'viewByActivityType'");
             activities.printList();
             System.out.println("");
@@ -174,7 +174,7 @@ public class MainApp {
             System.out.println("");
             System.out.println("AFTER 'sortByActivityDateDescending'");
             activities.printList();
-            System.out.println("");*/
+            System.out.println("");
 
 
         } catch (FileNotFoundException e) {
