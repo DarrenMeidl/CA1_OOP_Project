@@ -108,10 +108,10 @@ public class Activity implements Comparable<Activity>{
         //If the activity type is "Swimming" go through these checks - Darren
         if (this.type.equalsIgnoreCase("Swimming")){
             //If intensity is X, set msg String to X - Darren
-            if (this.intensity == 0.5){
+            if (this.intensity <= 0.5){
                 msg = "Very Light";
             }
-            else if (this.intensity == 1.25){
+            else if (this.intensity <= 1.25){
                 msg = "Light";
             }
             else if (this.intensity == 2){

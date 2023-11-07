@@ -12,6 +12,7 @@ public class MainApp {
         double inputTest2 = 5;
         String inputTest3 = "Light";
         double inputTest4 = 100;
+        double calAverage = 0;
 
         Activities activities = new Activities(); //Creates container for activities
 
@@ -44,6 +45,11 @@ public class MainApp {
                 activities.add(activity); //Add the instance to the container
 
             }
+            //TESTING calculateAverageCaloriesBurned()
+            System.out.println("TESTING 'calculateAverageCaloriesBurned'");
+            calAverage = activities.calculateAverageCaloriesBurned();
+            System.out.printf("AVERAGE CALORIES BURNED ACROSS ALL ACTIVITIES IS: %.3f\n", calAverage);
+            System.out.println("");
 
             //TESTING viewByActivityType()
             System.out.println("BEFORE 'viewByActivityType'");

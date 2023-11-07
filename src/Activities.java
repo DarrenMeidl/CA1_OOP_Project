@@ -109,4 +109,18 @@ public class Activities {
         }
     }
 
+    //VIEW STATISTICS: AVERAGE DISTANCE PER ACTIVITY
+
+
+    //VIEW STATISTICS: AVERAGE CALORIES BURNED
+    public double calculateAverageCaloriesBurned(){
+        double calTotal = 0;
+        double avgCalBurned = 0;
+        for (int i = 0; i < activityList.size(); i++){
+            calTotal = (calTotal + activityList.get(i).getCaloriesBurned());
+        }
+        avgCalBurned = (calTotal/activityList.size());
+        return avgCalBurned;
+    }
+
 }
