@@ -104,9 +104,9 @@ public class Activity implements Comparable<Activity>{
     }
     //Calculates the Intensity type - Darren
     public void calculateIntensityType(){
-        String msg = "NO IFs WERE CALLED";
+        String msg = " INVALID STRING ";
         //If the activity type is "Swimming" go through these checks - Darren
-        if (this.type == "Swimming"){
+        if (this.type.equalsIgnoreCase("Swimming")){
             //If intensity is X, set msg String to X - Darren
             if (this.intensity == 0.5){
                 msg = "Very Light";
@@ -123,9 +123,12 @@ public class Activity implements Comparable<Activity>{
             else if (this.intensity == 3.5){
                 msg = "Very Vigorous";
             }
+            else{
+                msg = " (SWIMMING)FAILED 2nd IF ";
+            }
         }
         //If the activity type is "Running" go through these checks - Darren
-        if (this.type == "Running"){
+        else if (this.type.equalsIgnoreCase("Running")){
             //If intensity is lower than X, set the msg to X - Tomas
             if (this.intensity < 4){
                 msg = "Very Light";
@@ -142,9 +145,12 @@ public class Activity implements Comparable<Activity>{
             else if (this.intensity >= 16 && this.intensity <= 24){
                 msg = "Very Vigorous";
             }
+            else {
+                msg = " REACHED 1st IF, FAILED 2nd IF ";
+            }
         }
         //If the activity type is "Cycling" go through these checks - Darren
-        if (this.type == "Cycling"){
+        else if (this.type.equalsIgnoreCase("Cycling")){
             //If intensity is lower than X, set the msg to X - Tomas
             if (this.intensity < 8){
                 msg = "Very Light";
@@ -161,8 +167,12 @@ public class Activity implements Comparable<Activity>{
             else if (this.intensity >= 33 && this.intensity <= 40){
                 msg = "Very Vigorous";
             }
+            else{
+                msg = " REACHED 1st IF, FAILED 2nd IF ";
+            }
         }
         this.intensityType = msg;
+        System.out.println(msg);
     }
 
     @Override

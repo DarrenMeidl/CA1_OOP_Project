@@ -10,8 +10,8 @@ public class MainApp {
         //User's input fields
         String inputTest1 = "cycling";
         double inputTest2 = 5;
-        String inputTest3 = "Vigorous";
-        double inputTest4 = 10;
+        String inputTest3 = "Light";
+        double inputTest4 = 100;
 
         Activities activities = new Activities(); //Creates container for activities
 
@@ -77,7 +77,7 @@ public class MainApp {
             activities.viewByActivityDuration(inputTest4);
             System.out.println("");
 
-            //TESTING sortByCaloriesBurnedDescending()
+            /*//TESTING sortByCaloriesBurnedDescending()
             System.out.println("BEFORE 'sortByCaloriesBurnedDescending'");
             activities.printList();
             activities.sortByCaloriesBurnedDescending();
@@ -147,7 +147,7 @@ public class MainApp {
             System.out.println("");
             System.out.println("AFTER 'sortByActivityDateDescending'");
             activities.printList();
-            System.out.println("");
+            System.out.println("");*/
 
 
         } catch (FileNotFoundException e) {
