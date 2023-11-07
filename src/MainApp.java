@@ -13,9 +13,6 @@ public class MainApp {
         String inputTest3 = "Vigorous";
         double inputTest4 = 100;
         double calAverage = 0;
-        double avgDistanceSwim = 0;
-        double avgDistanceRun = 0;
-        double avgDistanceCycle = 0;
 
         Activities activities = new Activities(); //Creates container for activities
 
@@ -63,17 +60,15 @@ public class MainApp {
 
             //TESTING calculateAverageCaloriesBurned()
             System.out.println("TESTING 'calculateAverageCaloriesBurned'");
-            calAverage = activities.calculateAverageCaloriesBurned();
-            System.out.printf("AVERAGE CALORIES BURNED ACROSS ALL ACTIVITIES IS: %.3f\n", calAverage);
-            avgDistanceSwim = activities.calculateAverageDistanceSwimming();
-            System.out.printf("AVERAGE DISTANCE IN SWIMMING ACTIVITY IS: %.3f\n", avgDistanceSwim);
-            avgDistanceRun = activities.calculateAverageDistanceRunning();
-            System.out.printf("AVERAGE DISTANCE IN RUNNING ACTIVITY IS: %.3f\n", avgDistanceRun);
-            avgDistanceCycle = activities.calculateAverageDistanceCycling();
-            System.out.printf("AVERAGE DISTANCE IN CYCLING ACTIVITY IS: %.3f\n", avgDistanceCycle);
+            activities.calculateAverageCaloriesBurned();
             System.out.println("");
 
-            //TESTING viewByActivityType()
+            //TESTING calculateAverageDistancePerActivity()
+            System.out.println("TESTING 'calculateAverageDistancePerActivity'");
+            activities.calculateAverageDistancePerActivity();
+            System.out.println("");
+
+            /*//TESTING viewByActivityType()
             System.out.println("BEFORE 'viewByActivityType'");
             activities.printList();
             System.out.println("");
@@ -109,7 +104,7 @@ public class MainApp {
             activities.viewByActivityDuration(inputTest4);
             System.out.println("");
 
-            /*//TESTING sortByCaloriesBurnedDescending()
+            //TESTING sortByCaloriesBurnedDescending()
             System.out.println("BEFORE 'sortByCaloriesBurnedDescending'");
             activities.printList();
             activities.sortByCaloriesBurnedDescending();
