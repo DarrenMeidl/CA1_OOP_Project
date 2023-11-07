@@ -10,7 +10,7 @@ public class MainApp {
         //User's input fields
         String inputTest1 = "cycling";
         double inputTest2 = 5;
-        String inputTest3 = "Light";
+        String inputTest3 = "Vigorous";
         double inputTest4 = 100;
         double calAverage = 0;
 
@@ -56,6 +56,7 @@ public class MainApp {
             activities.printList();
             System.out.println("");
             System.out.println("AFTER 'viewByActivityType'");
+            System.out.println("BASED ON: "+inputTest1);
             activities.viewByActivityType(inputTest1);
             System.out.println("");
 
@@ -64,6 +65,7 @@ public class MainApp {
             activities.printList();
             System.out.println("");
             System.out.println("AFTER 'viewByActivityDistance'");
+            System.out.println("BASED ON: "+inputTest2);
             activities.viewByActivityDistance(inputTest2);
             System.out.println("");
 
@@ -72,6 +74,7 @@ public class MainApp {
             activities.printList();
             System.out.println("");
             System.out.println("AFTER 'viewByActivityIntensityType'");
+            System.out.println("BASED ON: "+inputTest3);
             activities.viewByActivityIntensityType(inputTest3);
             System.out.println("");
 
@@ -80,6 +83,7 @@ public class MainApp {
             activities.printList();
             System.out.println("");
             System.out.println("AFTER 'viewByActivityDuration'");
+            System.out.println("BASED ON: "+inputTest4);
             activities.viewByActivityDuration(inputTest4);
             System.out.println("");
 

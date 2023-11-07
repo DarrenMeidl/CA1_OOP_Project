@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="Added prints in if statements for testing">
+    <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="Coded calculateAverageCaloriesBurned() method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Activities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activity.java" afterDir="false" />
@@ -133,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699362387992</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Coded calculateAverageCaloriesBurned() method">
+      <option name="closed" value="true" />
+      <created>1699364303339</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699364303339</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,7 +157,8 @@
     <MESSAGE value="Created 4 different subset views of activity, error with viewByActivityIntensityType() needs fixing" />
     <MESSAGE value="Code no longer errors, still not functioning as expected" />
     <MESSAGE value="Added prints in if statements for testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added prints in if statements for testing" />
+    <MESSAGE value="Coded calculateAverageCaloriesBurned() method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coded calculateAverageCaloriesBurned() method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

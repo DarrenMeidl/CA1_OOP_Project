@@ -93,9 +93,9 @@ public class Activities {
             if (activityList.get(i).getIntensityType().equalsIgnoreCase(input)){ //If strings are the same, print the current activity object in arraylist - Darren
                 System.out.printf("%17s%17f%17s%17f%17f%17f\n",  activityList.get(i).getType(),activityList.get(i).getDuration(), activityList.get(i).getDate(), activityList.get(i).getDistance(), activityList.get(i).getAvgHeartRate(), activityList.get(i).getCaloriesBurned());
             }
-            else {
-                System.out.println("IF WAS FALSE");
-            }
+            /*else {
+                System.out.println("SKIPPED THIS ACTIVITY"); //Testing Purposes, if object doesn't match type it won't get printed - Darren
+            }*/
         }
     }
 

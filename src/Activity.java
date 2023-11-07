@@ -111,20 +111,20 @@ public class Activity implements Comparable<Activity>{
             if (this.intensity <= 0.5){
                 msg = "Very Light";
             }
-            else if (this.intensity <= 1.25){
+            else if (this.intensity > 0.5 && this.intensity <= 1.25){
                 msg = "Light";
             }
-            else if (this.intensity == 2){
+            else if (this.intensity > 1.25 && this.intensity <= 2){
                 msg = "Moderate";
             }
-            else if (this.intensity == 2.75){
+            else if (this.intensity > 2 && this.intensity <= 2.75){
                 msg = "Vigorous";
             }
-            else if (this.intensity == 3.5){
+            else if (this.intensity > 2.75 && this.intensity <= 3.5){
                 msg = "Very Vigorous";
             }
             else{
-                msg = " (SWIMMING)FAILED 2nd IF ";
+                msg = "SWIMMING - INTENSITY BIGGER THAN 3.5";
             }
         }
         //If the activity type is "Running" go through these checks - Darren
@@ -146,7 +146,7 @@ public class Activity implements Comparable<Activity>{
                 msg = "Very Vigorous";
             }
             else {
-                msg = " REACHED 1st IF, FAILED 2nd IF ";
+                msg = "RUNNING - INTENSITY BIGGER THAN 24";
             }
         }
         //If the activity type is "Cycling" go through these checks - Darren
@@ -168,11 +168,11 @@ public class Activity implements Comparable<Activity>{
                 msg = "Very Vigorous";
             }
             else{
-                msg = " REACHED 1st IF, FAILED 2nd IF ";
+                msg = "CYCLING - INTENSITY BIGGER THAN 40";
             }
         }
         this.intensityType = msg;
-        System.out.println(msg);
+        //System.out.println(msg); //Testing Purposes, check to see what insensity type it is before printing object - Darren
     }
 
     @Override
