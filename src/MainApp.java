@@ -13,8 +13,12 @@ public class MainApp {
         String inputTest3 = "Vigorous";
         double inputTest4 = 100;
         double calAverage = 0;
+        double avgDistanceSwim = 0;
+        double avgDistanceRun = 0;
+        double avgDistanceCycle = 0;
 
         Activities activities = new Activities(); //Creates container for activities
+
 
         String fileName = "activity_data_10.csv"; //Reference to the cvs file
         File file = new File(fileName);
@@ -45,10 +49,28 @@ public class MainApp {
                 activities.add(activity); //Add the instance to the container
 
             }
+
+            Activity key = new Activity("Running", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
+
+            //Start binarysearch method in activities based on the key wanted
+            int index = activities.binarySearchByActivityType(key);
+
+            if (index >= 0) {
+                System.out.println("Found " + activities.activityList.get(index) + " at index " + index); //If it's found in the arraylist 1 or multiple times, we get the index of that key in the arraylist
+            } else {
+                System.out.println("Not found in the list"); //Activates when the key is not found in the arraylist
+            }
+
             //TESTING calculateAverageCaloriesBurned()
             System.out.println("TESTING 'calculateAverageCaloriesBurned'");
             calAverage = activities.calculateAverageCaloriesBurned();
             System.out.printf("AVERAGE CALORIES BURNED ACROSS ALL ACTIVITIES IS: %.3f\n", calAverage);
+            avgDistanceSwim = activities.calculateAverageDistanceSwimming();
+            System.out.printf("AVERAGE DISTANCE IN SWIMMING ACTIVITY IS: %.3f\n", avgDistanceSwim);
+            avgDistanceRun = activities.calculateAverageDistanceRunning();
+            System.out.printf("AVERAGE DISTANCE IN RUNNING ACTIVITY IS: %.3f\n", avgDistanceRun);
+            avgDistanceCycle = activities.calculateAverageDistanceCycling();
+            System.out.printf("AVERAGE DISTANCE IN CYCLING ACTIVITY IS: %.3f\n", avgDistanceCycle);
             System.out.println("");
 
             //TESTING viewByActivityType()

@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -48,12 +49,14 @@ public class Activities {
     }
 
     public void sortByActivityType() {
-        Collections.sort(activityList, new Comparator<Activity>() { //Sorts by using Anonymous Inner Class - Tomas
+        Collections.sort(activityList, new ActivityTypeComparator());
+
+        /*Collections.sort(activityList, new Comparator<Activity>() { //Sorts by using Anonymous Inner Class - Tomas
             @Override
             public int compare(Activity act1, Activity act2) {
                 return act1.getType().compareTo(act2.getType());
             }
-        });
+        });*/
     }
 
     //DISTANCE
@@ -110,7 +113,41 @@ public class Activities {
     }
 
     //VIEW STATISTICS: AVERAGE DISTANCE PER ACTIVITY
+    //VIEW STATISTICS: AVERAGE DISTANCE SWIMMING
+    public double calculateAverageDistanceSwimming() {
+        double totalDistance = 0;
+        double avgDistancecSwim = 0;
+        for (int i = 0; i < activityList.size(); i++) {
+            if (activityList.get(i).getType() == "Swimming") {
+                totalDistance = (totalDistance + activityList.get(i).getDistance());
+            }
+            avgDistancecSwim = totalDistance / activityList.size();
+        } return avgDistancecSwim;
+    }
 
+    //VIEW STATISTICS: AVERAGE DISTANCE RUNNING
+    public double calculateAverageDistanceRunning() {
+        double totalDistance = 0;
+        double avgDistanceRun = 0;
+        for (int i = 0; i < activityList.size(); i++) {
+            if (activityList.get(i).getType() == "Running") {
+                totalDistance = (totalDistance + activityList.get(i).getDistance());
+            }
+            avgDistanceRun = totalDistance / activityList.size();
+        } return avgDistanceRun;
+    }
+
+    //VIEW STATISTICS: AVERAGE DISTANCE CYCLING
+    public double calculateAverageDistanceCycling() {
+        double totalDistance = 0;
+        double avgDistanceCycle = 0;
+        for (int i = 0; i < activityList.size(); i++) {
+            if (activityList.get(i).getType() == "Cycling") {
+                totalDistance = (totalDistance + activityList.get(i).getDistance());
+            }
+            avgDistanceCycle = totalDistance / activityList.size();
+        } return avgDistanceCycle;
+    }
 
     //VIEW STATISTICS: AVERAGE CALORIES BURNED
     public double calculateAverageCaloriesBurned(){
@@ -122,5 +159,11 @@ public class Activities {
         avgCalBurned = (calTotal/activityList.size());
         return avgCalBurned;
     }
+
+    public int binarySearchByActivityType(Activity key) { //Method for binary search which is called in the main app and requires a key to be found
+        return Collections.binarySearch(activityList, key, new ActivityTypeComparator()); //Binary search is searching through the activitylist, tries to find the key and uses the ActivityTypeComparator to compare it
+    }
+
+
 
 }
