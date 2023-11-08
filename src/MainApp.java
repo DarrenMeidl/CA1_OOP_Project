@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 //MainApp Class
@@ -29,7 +31,6 @@ public class MainApp {
                 String[] instances = line.split(",");  //Setting comma as a separator in a line
 
                 String type = instances[0];  //Separating each instance of a string from the file into a variable for each row and column
-                //String date = instances[1];
                 LocalDate date = LocalDate.parse(instances[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));  //Formatting date as in the file, using trim to remove unwanted spaces
                 double duration = Double.parseDouble(instances[2]);
                 double distance = Double.parseDouble(instances[3]);
@@ -43,11 +44,44 @@ public class MainApp {
                 Activity activity = new Activity(type, duration, date, distance, avgHeartRate); //Create instance of activities from the file
                 activity.calculateEnergyExpended(distance, duration);
                 activity.calculateCaloriesBurned(activity.getIntensity(), duration);
-                activities.add(activity); //Add the instance to the container
+                boolean duplicate = false;
 
+                for (int i = 0; i < activities.activityList.size(); i++) {
+                    Activity arrayactivity = activities.activityList.get(i);
+
+                    if (arrayactivity.getType().equals(activity.getType()) && //If the types of previous activities are equal and other conditions equal... set it as duplicate
+                            arrayactivity.getDate().equals(activity.getDate()) &&
+                            arrayactivity.getDuration() == activity.getDuration() &&
+                            arrayactivity.getDistance() == activity.getDistance() &&
+                            arrayactivity.getAvgHeartRate() == activity.getAvgHeartRate()) {
+                        duplicate = true; //If all the above equal, set the duplicate boolean as true
+                        System.out.println("DUPLICATE FOUND");
+                        break;
+
+                    }
+                }
+
+                if (!duplicate) {
+                    activities.add(activity); //If the above values are not duplicate, add the activity to the arraylist
+                }
             }
 
-            Activity key = new Activity("Running", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
+
+            activities.sortByActivityDateAscending(); //Sorts the list with natural sorting by date
+            //or just activities.sort();
+
+            LocalDate searchDate = LocalDate.parse("2020-01-07"); //User inputs a date that is going to be found at a index if it exists in the arraylist
+            int index = activities.binarySearchByDate(searchDate); //Starts the binarysearch based on the date to find the index of it
+
+            if (index >= 0) {
+                Activity indexActivity = activities.activityList.get(index); //gets the info about the activity from the index it was found on
+                System.out.println("Activity found at index " + index + ": " + indexActivity);
+            } else {
+                System.out.println("Activity not found.");
+            }
+
+
+            /*Activity key = new Activity("Swimming", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
 
             //Start binarysearch method in activities based on the key wanted
             int index = activities.binarySearchByActivityType(key);
@@ -56,7 +90,7 @@ public class MainApp {
                 System.out.println("Found " + activities.activityList.get(index) + " at index " + index); //If it's found in the arraylist 1 or multiple times, we get the index of that key in the arraylist
             } else {
                 System.out.println("Not found in the list"); //Activates when the key is not found in the arraylist
-            }
+            }*/
 
             //TESTING calculateAverageCaloriesBurned()
             System.out.println("TESTING 'calculateAverageCaloriesBurned'");

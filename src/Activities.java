@@ -158,10 +158,15 @@ public class Activities {
     }
 
 
-    //BINARY SEARCH METHOD
+    /*//BINARY SEARCH METHOD
     public int binarySearchByActivityType(Activity key) { //Method for binary search which is called in the main app and requires a key to be found
-        Collections.sort(activityList); //Sorts arraylist by natural ordering before the binary search - Darren
-        return Collections.binarySearch(activityList, key, new ActivityTypeComparator()); //Binary search is searching through the activitylist, tries to find the key and uses the ActivityTypeComparator to compare it
+        return Collections.binarySearch(activityList, key); //Binary search is searching through the activitylist, tries to find the key and uses the ActivityTypeComparator to compare it
+    }*/
+
+    public int binarySearchByDate(LocalDate searchDate) {
+        //Comparator<Activity> comparator = (act1, act2) -> act1.getDate().compareTo(searchDate);
+        Activity key = new Activity("", 0, searchDate, 0, 0); //Set up the key with a value user wants to find
+        return Collections.binarySearch(activityList, key); //Start binary search
     }
 
 

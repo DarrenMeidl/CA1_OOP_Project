@@ -191,7 +191,7 @@ public class Activity implements Comparable<Activity>{
 
     @Override
     public int compareTo(Activity other){
-        return this.type.compareTo(other.type);
+        return this.date.compareTo(other.date);
     }
 
     //Static comparator
