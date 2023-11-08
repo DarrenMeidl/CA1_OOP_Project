@@ -47,7 +47,44 @@ public class MainApp {
 
             //2. ADD ACTIVITY
             else if (selection == 2){
+                boolean addActivity = true;
+                while (addActivity){
+                    System.out.print("Add your own activity fields? [Y/N]: ");
+                    String userInput = keyboard.nextLine();
+                    //IF NO, ADD OBJECT WITH DEFAULT CONSTRUCTOR
+                    if(userInput.equalsIgnoreCase("n")){
+                        Activity newActivity = new Activity();
+                        activities.add(newActivity);
+                        System.out.println("Added Default Activity");
+                        //CHECK IF YOU WANT TO ADD ANOTHER ACTIVITY
+                        System.out.print("Do you want to add another activity? [Y/N]: ");
+                        String input = keyboard.nextLine();
+                        if (input.equalsIgnoreCase("n")){
+                            addActivity = false;
+                        }
+                    }
+                    //IF YES, USER ENTERS THEIR OWN FIELDS
+                    else if(userInput.equalsIgnoreCase("y")){
+                        System.out.print("Enter Activity Type: ");
+                        String inputType = keyboard.nextLine();
+                        System.out.print("Enter Date (YYYY-MM-DD): ");
+                        LocalDate inputDate = LocalDate.parse(keyboard.nextLine());
+                        System.out.print("Enter Duration: ");
+                        double inputDuration = keyboard.nextDouble();
+                        System.out.print("Enter Distance: ");
+                        double inputDistance = keyboard.nextDouble();
+                        System.out.print("Enter Average Heart Rate: ");
+                        int inputAvgHeartrate = keyboard.nextInt();
 
+                        Activity newActivity = new Activity(inputType, inputDuration, inputDate, inputDistance, inputAvgHeartrate);
+                        activities.add(newActivity);
+                    }
+                    //OTHERWISE, TRY AGAIN
+                    else{
+                        System.out.println("INVALID INPUT. TRY AGAIN.");
+                        System.out.println("");
+                    }
+                }
             }
 
 
