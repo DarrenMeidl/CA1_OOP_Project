@@ -35,9 +35,7 @@ public class MainApp {
                 double duration = Double.parseDouble(instances[2]);
                 double distance = Double.parseDouble(instances[3]);
                 int avgHeartRate = Integer.parseInt(instances[4].trim()); //Trims it because of unwanted space of the string before parsing as integer
-                /*//Use format specifiers to print the values
-                System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code (File output)
-                        type, date, duration, distance, avgHeartRate);*/
+
                 Activity activity = new Activity(type, duration, date, distance, avgHeartRate); //Create instance of activities from the file
                 activity.calculateEnergyExpended(distance, duration);
                 activity.calculateCaloriesBurned(activity.getIntensity(), duration);
@@ -122,6 +120,13 @@ public class MainApp {
 
                         Activity newActivity = new Activity(inputType, inputDuration, inputDate, inputDistance, inputAvgHeartrate);
                         activities.add(newActivity);
+                        System.out.println("Added Custom Activity");
+                        //CHECK IF YOU WANT TO ADD ANOTHER ACTIVITY
+                        System.out.print("Do you want to add another activity? [Y/N]: ");
+                        String input = keyboard.nextLine();
+                        if (input.equalsIgnoreCase("n")) {
+                            addActivity = false;
+                        }
                     }
                     //OTHERWISE, TRY AGAIN
                     else {
@@ -263,38 +268,34 @@ public class MainApp {
 
                     //1. Activity Type
                     if (subsetActivitiesSelect == 1) {
-                        //Activity Type method
-                        System.out.println("");
-                        System.out.println("AFTER 'viewByActivityType'");
-                        System.out.println("BASED ON: "+inputTest1);
-                        activities.viewByActivityType(inputTest1);
+                        System.out.print("Enter Activity Type: ");
+                        String userInput = keyboard.nextLine();
+                        System.out.println("VIEW BY ACTIVITY TYPE");
+                        activities.viewByActivityType(userInput);
                     }
 
                     //2. Above Minimum Distance
                     else if (subsetActivitiesSelect == 2) {
-                        //Above Minimum Distance method
-                        System.out.println("");
-                        System.out.println("AFTER 'viewByActivityDistance'");
-                        System.out.println("BASED ON: "+inputTest2);
-                        activities.viewByActivityDistance(inputTest2);
+                        System.out.print("Enter Minimum Distance: ");
+                        double userInput = keyboard.nextDouble();
+                        System.out.println("VIEW ABOVE MINIMUM DISTANCE");
+                        activities.viewByActivityDistance(userInput);
                     }
 
                     //3. Energy Expended Type
                     else if (subsetActivitiesSelect == 3) {
-                        //Energy Expended Type method
-                        System.out.println("");
-                        System.out.println("AFTER 'viewByActivityIntensityType'");
-                        System.out.println("BASED ON: "+inputTest3);
-                        activities.viewByActivityIntensityType(inputTest3);
+                        System.out.print("Enter Energy Type: ");
+                        String userInput = keyboard.nextLine();
+                        System.out.println("VIEW BY ENERGY EXPENDED TYPE");
+                        activities.viewByActivityIntensityType(userInput);
                     }
 
                     //4. Above Minimum Duration
                     else if (subsetActivitiesSelect == 4) {
-                        //Above Minimum Duration method
-                        System.out.println("");
-                        System.out.println("AFTER 'viewByActivityDuration'");
-                        System.out.println("BASED ON: "+inputTest4);
-                        activities.viewByActivityDuration(inputTest4);
+                        System.out.print("Enter Minimum Duration: ");
+                        double userInput = keyboard.nextDouble();
+                        System.out.println("VIEW ABOVE MINIMUM DURATION");
+                        activities.viewByActivityDuration(userInput);
                     }
 
                     //5. Quit
