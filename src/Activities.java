@@ -155,7 +155,7 @@ public class Activities {
             calTotal = (calTotal + activityList.get(i).getCaloriesBurned());
         }
         avgCalBurned = (calTotal/activityList.size());
-        System.out.printf("AVERAGE CALORIES BURNED ACROSS ALL ACTIVITIES %.3f", avgCalBurned);
+        System.out.printf("AVERAGE CALORIES BURNED ACROSS ALL ACTIVITIES IS: %.3f\n", avgCalBurned);
     }
 
 
@@ -167,6 +167,7 @@ public class Activities {
     public int binarySearchByDate(LocalDate searchDate) {
         //Comparator<Activity> comparator = (act1, act2) -> act1.getDate().compareTo(searchDate);
         Activity key = new Activity("", 0, searchDate, 0, 0); //Set up the key with a value user wants to find
+        System.out.println("");
         return Collections.binarySearch(activityList, key); //Start binary search
     }
 

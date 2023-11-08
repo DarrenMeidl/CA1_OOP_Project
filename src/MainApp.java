@@ -2,8 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 //MainApp Class
@@ -14,9 +12,8 @@ public class MainApp {
         double inputTest2 = 5;
         String inputTest3 = "Vigorous";
         double inputTest4 = 100;
-        double calAverage = 0;
 
-        Activities activities = new Activities(); //Creates a refernce to a new activities object
+        Activities activities = new Activities(); //Creates a reference to a new activities object
 
         Scanner keyboard = new Scanner(System.in); //Creates reference to new Scanner object
 
@@ -45,6 +42,7 @@ public class MainApp {
                 activity.calculateEnergyExpended(distance, duration);
                 activity.calculateCaloriesBurned(activity.getIntensity(), duration);
                 boolean duplicate = false;
+
                 //CHECKING FOR DUPLICATES LOOP
                 for (int i = 0; i < activities.activityList.size(); i++) {
                     Activity arrayactivity = activities.activityList.get(i);
@@ -158,13 +156,82 @@ public class MainApp {
                     //1. Natural Order
                     if (sortActivitiesSelect == 1) {
                         //Natural Order method
+                        activities.sort();
+                        System.out.println("");
+                        System.out.println("SORTING BY NATURAL ORDER");
+                        activities.printList();
                     }
                     //2. Calories Burned Descending
                     else if (sortActivitiesSelect == 2) {
                         //Calories Burned Descending method
+                        activities.sortByCaloriesBurnedDescending();
+                        System.out.println("");
+                        System.out.println("SORTING BY CALORIES DESCENDING");
+                        activities.printList();
                     }
 
-                    //etc.
+                    //3. Duration (Ascending)
+                    else if (sortActivitiesSelect == 3) {
+                        //Duration (Ascending) method
+                        activities.sortByActivityDurationAscending();
+                        System.out.println("");
+                        System.out.println("SORTING BY DURATION ASCENDING");
+                        activities.printList();
+                    }
+
+                    //4. Duration (Descending)
+                    else if (sortActivitiesSelect == 4) {
+                        //Duration (Descending) method
+                        activities.sortByActivityDurationDescending();
+                        System.out.println("");
+                        System.out.println("SORTING BY DURATION DESCENDING");
+                        activities.printList();
+                    }
+
+                    //5. Date (Ascending)
+                    else if (sortActivitiesSelect == 5) {
+                        //Date (Ascending) method
+                        activities.sortByActivityDateAscending();
+                        System.out.println("");
+                        System.out.println("SORTING BY DATE ASCENDING");
+                        activities.printList();
+                    }
+
+                    //6. Date (Descending)
+                    else if (sortActivitiesSelect == 6) {
+                        //Date (Descending) method
+                        activities.sortByActivityDateDescending();
+                        System.out.println("");
+                        System.out.println("SORTING BY DATE DESCENDING");
+                        activities.printList();
+                    }
+
+                    //7. Distance (Ascending)
+                    else if (sortActivitiesSelect == 7) {
+                        //Distance (Ascending) method
+                        activities.sortByActivityDistanceAscending();
+                        System.out.println("");
+                        System.out.println("SORTING BY DISTANCE ASCENDING");
+                        activities.printList();
+                    }
+
+                    //8. Distance (Descending)
+                    else if (sortActivitiesSelect == 8) {
+                        //Distance (Descending) method
+                        activities.sortByActivityDistanceDescending();
+                        System.out.println("");
+                        System.out.println("SORTING BY DISTANCE DESCENDING");
+                        activities.printList();
+                    }
+
+                    //9. Activity Type
+                    else if (sortActivitiesSelect == 9) {
+                        //Activity Type method
+                        activities.sortByActivityType();
+                        System.out.println("");
+                        System.out.println("SORTING BY ACTIVITY TYPE");
+                        activities.printList();
+                    }
 
                     //10. Quit
                     else if (sortActivitiesSelect == 10) {
@@ -197,13 +264,38 @@ public class MainApp {
                     //1. Activity Type
                     if (subsetActivitiesSelect == 1) {
                         //Activity Type method
+                        System.out.println("");
+                        System.out.println("AFTER 'viewByActivityType'");
+                        System.out.println("BASED ON: "+inputTest1);
+                        activities.viewByActivityType(inputTest1);
                     }
+
                     //2. Above Minimum Distance
                     else if (subsetActivitiesSelect == 2) {
                         //Above Minimum Distance method
+                        System.out.println("");
+                        System.out.println("AFTER 'viewByActivityDistance'");
+                        System.out.println("BASED ON: "+inputTest2);
+                        activities.viewByActivityDistance(inputTest2);
                     }
 
-                    //etc.
+                    //3. Energy Expended Type
+                    else if (subsetActivitiesSelect == 3) {
+                        //Energy Expended Type method
+                        System.out.println("");
+                        System.out.println("AFTER 'viewByActivityIntensityType'");
+                        System.out.println("BASED ON: "+inputTest3);
+                        activities.viewByActivityIntensityType(inputTest3);
+                    }
+
+                    //4. Above Minimum Duration
+                    else if (subsetActivitiesSelect == 4) {
+                        //Above Minimum Duration method
+                        System.out.println("");
+                        System.out.println("AFTER 'viewByActivityDuration'");
+                        System.out.println("BASED ON: "+inputTest4);
+                        activities.viewByActivityDuration(inputTest4);
+                    }
 
                     //5. Quit
                     else if (subsetActivitiesSelect == 5) {
@@ -233,11 +325,17 @@ public class MainApp {
                     //1. Average Distance Per Activity
                     if (viewStatisticsSelect == 1) {
                         //Average Distance Per Activity method
+                        System.out.println("");
+                        activities.calculateAverageDistancePerActivity();
                     }
+
                     //2. Average Calories Burned
                     else if (viewStatisticsSelect == 2) {
                         //Average Calories Burned method
+                        System.out.println("");
+                        activities.calculateAverageCaloriesBurned();
                     }
+
                     //3. Quit
                     else if (viewStatisticsSelect == 3) {
                         viewStatistics = false;
@@ -265,18 +363,7 @@ public class MainApp {
                 } else {
                     System.out.println("Activity not found.");
                 }
-                /*Activity key = new Activity("Swimming", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
-
-            //Start binarysearch method in activities based on the key wanted
-            int index = activities.binarySearchByActivityType(key);
-
-            if (index >= 0) {
-                System.out.println("Found " + activities.activityList.get(index) + " at index " + index); //If it's found in the arraylist 1 or multiple times, we get the index of that key in the arraylist
-            } else {
-                System.out.println("Not found in the list"); //Activates when the key is not found in the arraylist
-            }*/
             }
-
 
 
         //7. QUIT
@@ -288,150 +375,6 @@ public class MainApp {
                 System.out.println("");
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* OLD TESTING PRINTS
-        //TESTING calculateAverageCaloriesBurned()
-        System.out.println("TESTING 'calculateAverageCaloriesBurned'");
-        activities.calculateAverageCaloriesBurned();
-        System.out.println("");
-
-        //TESTING calculateAverageDistancePerActivity()
-        System.out.println("TESTING 'calculateAverageDistancePerActivity'");
-        activities.calculateAverageDistancePerActivity();
-        System.out.println("");
-
-        //TESTING viewByActivityType()
-        System.out.println("BEFORE 'viewByActivityType'");
-        activities.printList();
-        System.out.println("");
-        System.out.println("AFTER 'viewByActivityType'");
-        System.out.println("BASED ON: "+inputTest1);
-        activities.viewByActivityType(inputTest1);
-        System.out.println("");
-
-        //TESTING viewByActivityDistance()
-        System.out.println("BEFORE 'viewByActivityDistance'");
-        activities.printList();
-        System.out.println("");
-        System.out.println("AFTER 'viewByActivityDistance'");
-        System.out.println("BASED ON: "+inputTest2);
-        activities.viewByActivityDistance(inputTest2);
-        System.out.println("");
-
-        //TESTING viewByActivityIntensityType()
-        System.out.println("BEFORE 'viewByActivityIntensityType'");
-        activities.printList();
-        System.out.println("");
-        System.out.println("AFTER 'viewByActivityIntensityType'");
-        System.out.println("BASED ON: "+inputTest3);
-        activities.viewByActivityIntensityType(inputTest3);
-        System.out.println("");
-
-        //TESTING viewByActivityDuration()
-        System.out.println("BEFORE 'viewByActivityDuration'");
-        activities.printList();
-        System.out.println("");
-        System.out.println("AFTER 'viewByActivityDuration'");
-        System.out.println("BASED ON: "+inputTest4);
-        activities.viewByActivityDuration(inputTest4);
-        System.out.println("");
-
-        //TESTING sortByCaloriesBurnedDescending()
-        System.out.println("BEFORE 'sortByCaloriesBurnedDescending'");
-        activities.printList();
-        activities.sortByCaloriesBurnedDescending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByCaloriesBurnedDescending'");
-        activities.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDurationAscending()
-        System.out.println("BEFORE 'sortByActivityDurationAscending'");
-        activities.printList();
-        activities.sortByActivityDurationAscending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDurationAscending'");
-        activities.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDurationDescending()
-        System.out.println("BEFORE 'sortByActivityDurationDescending'");
-        activities.printList();
-        activities.sortByActivityDurationDescending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDurationDescending'");
-        activities.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDistanceAscending()
-        System.out.println("BEFORE 'sortByActivityDistanceAscending'");
-        activities.printList();
-        activities.sortByActivityDistanceAscending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDistanceAscending'");
-        activities.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDistanceDescending()
-        System.out.println("BEFORE 'sortByActivityDistanceDescending'");
-        activities.printList();
-        activities.sortByActivityDistanceDescending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDistanceDescending'");
-        activities.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityType()
-        System.out.println("BEFORE 'sortByActivityType'");
-        activities.printList();
-        activities.sortByActivityType();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityType'");
-        activities.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDateAscending()
-        System.out.println("BEFORE 'sortByActivityDateAscending'");
-        activities.printList();
-        activities.sortByActivityDateAscending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDateAscending'");
-        activities.printList();
-        System.out.println("");
-
-        //TESTING sortByActivityDateDescending()
-        System.out.println("BEFORE 'sortByActivityDateDescending'");
-        activities.printList();
-        activities.sortByActivityDateDescending();
-        System.out.println("");
-        System.out.println("AFTER 'sortByActivityDateDescending'");
-        activities.printList();
-        System.out.println("");*/
 
     }
 }
