@@ -75,7 +75,76 @@ public class MainApp {
 
             //6. Binary Search
             if (selection == 6){
+                //BINARY SEARCH
+                String fileName = "activity_data_10.csv"; //Reference to the cvs file
+                File file = new File(fileName);
+                try (Scanner sc = new Scanner(file)) {
+                    if (sc.hasNextLine()) {
+                        sc.nextLine();   //"Consume" the header by reading it and not using it further
+                    }
+                    //Reads lines if there are any, makes them strings and creates string instances for each variable
+                    while (sc.hasNextLine()) {
+                        String line = sc.nextLine();             //Reads full line based on \n
+                        String[] instances = line.split(",");  //Setting comma as a separator in a line
 
+                        String type = instances[0];  //Separating each instance of a string from the file into a variable for each row and column
+                        LocalDate date = LocalDate.parse(instances[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));  //Formatting date as in the file, using trim to remove unwanted spaces
+                        double duration = Double.parseDouble(instances[2]);
+                        double distance = Double.parseDouble(instances[3]);
+                        int avgHeartRate = Integer.parseInt(instances[4].trim()); //Trims it because of unwanted space of the string before parsing as integer
+                /*//Use format specifiers to print the values
+                System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code (File output)
+                        type, date, duration, distance, avgHeartRate);*/
+                        Activity activity = new Activity(type, duration, date, distance, avgHeartRate); //Create instance of activities from the file
+                        activity.calculateEnergyExpended(distance, duration);
+                        activity.calculateCaloriesBurned(activity.getIntensity(), duration);
+                        boolean duplicate = false;
+                        //CHECKING FOR DUPLICATES LOOP
+                        for (int i = 0; i < activities.activityList.size(); i++) {
+                            Activity arrayactivity = activities.activityList.get(i);
+                            //If a duplicate is found
+                            if (arrayactivity.getType().equals(activity.getType()) && //If the types of previous activities are equal and other conditions equal... set it as duplicate
+                                    arrayactivity.getDate().equals(activity.getDate()) &&
+                                    arrayactivity.getDuration() == activity.getDuration() &&
+                                    arrayactivity.getDistance() == activity.getDistance() &&
+                                    arrayactivity.getAvgHeartRate() == activity.getAvgHeartRate()) {
+                                duplicate = true; //If all the above equal, set the duplicate boolean as true
+                                System.out.println("DUPLICATE FOUND");
+                                break;
+                            }
+                        }
+                        //If a duplicate isn't found
+                        if (!duplicate) {
+                            activities.add(activity); //If the above values are not duplicate, add the activity to the arraylist
+                        }
+                    }
+                    //SORT
+                    activities.sortByActivityDateAscending(); //Sorts the list with natural sorting by date, or just activities.sort();
+                    //USER INPUT
+                    System.out.print("Enter Activity Date (YYYY-MM-DD): ");
+                    String userInput = keyboard.nextLine();
+                    //SEARCH
+                    LocalDate searchDate = LocalDate.parse(userInput); //User inputs a date that is going to be found at a index if it exists in the arraylist
+                    int index = activities.binarySearchByDate(searchDate); //Starts the binarysearch based on the date to find the index of it
+                    if (index >= 0) {
+                        Activity indexActivity = activities.activityList.get(index); //gets the info about the activity from the index it was found on
+                        System.out.println("Activity found at index " + index + ": " + indexActivity);
+                    } else {
+                        System.out.println("Activity not found.");
+                    }
+            /*Activity key = new Activity("Swimming", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
+
+            //Start binarysearch method in activities based on the key wanted
+            int index = activities.binarySearchByActivityType(key);
+
+            if (index >= 0) {
+                System.out.println("Found " + activities.activityList.get(index) + " at index " + index); //If it's found in the arraylist 1 or multiple times, we get the index of that key in the arraylist
+            } else {
+                System.out.println("Not found in the list"); //Activates when the key is not found in the arraylist
+            }*/
+                }   catch (FileNotFoundException e) {
+                    System.out.println("File not found: " + fileName); //Prints out when file was not found
+                }
             }
 
 
@@ -101,81 +170,14 @@ public class MainApp {
 
 
 
-        //BINARY SEARCH
-        String fileName = "activity_data_10.csv"; //Reference to the cvs file
-        File file = new File(fileName);
-        try (Scanner sc = new Scanner(file)) {
-            if (sc.hasNextLine()) {
-                sc.nextLine();   //"Consume" the header by reading it and not using it further
-            }
-            //Reads lines if there are any, makes them strings and creates string instances for each variable
-            while (sc.hasNextLine()) {
-                String line = sc.nextLine();             //Reads full line based on \n
-                String[] instances = line.split(",");  //Setting comma as a separator in a line
-
-                String type = instances[0];  //Separating each instance of a string from the file into a variable for each row and column
-                LocalDate date = LocalDate.parse(instances[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));  //Formatting date as in the file, using trim to remove unwanted spaces
-                double duration = Double.parseDouble(instances[2]);
-                double distance = Double.parseDouble(instances[3]);
-                int avgHeartRate = Integer.parseInt(instances[4].trim()); //Trims it because of unwanted space of the string before parsing as integer
-
-                /*//Use format specifiers to print the values
-                System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code (File output)
-                        type, date, duration, distance, avgHeartRate);*/
 
 
-                Activity activity = new Activity(type, duration, date, distance, avgHeartRate); //Create instance of activities from the file
-                activity.calculateEnergyExpended(distance, duration);
-                activity.calculateCaloriesBurned(activity.getIntensity(), duration);
-                boolean duplicate = false;
-                //CHECKING FOR DUPLICATES LOOP
-                for (int i = 0; i < activities.activityList.size(); i++) {
-                    Activity arrayactivity = activities.activityList.get(i);
-                    //If a duplicate is found
-                    if (arrayactivity.getType().equals(activity.getType()) && //If the types of previous activities are equal and other conditions equal... set it as duplicate
-                            arrayactivity.getDate().equals(activity.getDate()) &&
-                            arrayactivity.getDuration() == activity.getDuration() &&
-                            arrayactivity.getDistance() == activity.getDistance() &&
-                            arrayactivity.getAvgHeartRate() == activity.getAvgHeartRate()) {
-                        duplicate = true; //If all the above equal, set the duplicate boolean as true
-                        System.out.println("DUPLICATE FOUND");
-                        break;
-                    }
-                }
-                //If a duplicate isn't found
-                if (!duplicate) {
-                    activities.add(activity); //If the above values are not duplicate, add the activity to the arraylist
-                }
-            }
 
 
-            activities.sortByActivityDateAscending(); //Sorts the list with natural sorting by date
-            //or just activities.sort();
-
-            LocalDate searchDate = LocalDate.parse("2020-01-07"); //User inputs a date that is going to be found at a index if it exists in the arraylist
-            int index = activities.binarySearchByDate(searchDate); //Starts the binarysearch based on the date to find the index of it
-
-            if (index >= 0) {
-                Activity indexActivity = activities.activityList.get(index); //gets the info about the activity from the index it was found on
-                System.out.println("Activity found at index " + index + ": " + indexActivity);
-            } else {
-                System.out.println("Activity not found.");
-            }
 
 
-            /*Activity key = new Activity("Swimming", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
 
-            //Start binarysearch method in activities based on the key wanted
-            int index = activities.binarySearchByActivityType(key);
 
-            if (index >= 0) {
-                System.out.println("Found " + activities.activityList.get(index) + " at index " + index); //If it's found in the arraylist 1 or multiple times, we get the index of that key in the arraylist
-            } else {
-                System.out.println("Not found in the list"); //Activates when the key is not found in the arraylist
-            }*/
-        }   catch (FileNotFoundException e) {
-            System.out.println("File not found: " + fileName); //Prints out when file was not found
-            }
 
         /* OLD TESTING PRINTS
         //TESTING calculateAverageCaloriesBurned()

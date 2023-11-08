@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="Revamp of some comparators to add variety, code adjustments and comments">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="Added Main Menu Print Options &amp; Selections">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Activities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699388665726</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added Main Menu Print Options &amp; Selections">
+      <option name="closed" value="true" />
+      <created>1699459140335</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699459140335</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +177,8 @@
     <MESSAGE value="Added prints in if statements for testing" />
     <MESSAGE value="Coded calculateAverageCaloriesBurned() method" />
     <MESSAGE value="Revamp of some comparators to add variety, code adjustments and comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revamp of some comparators to add variety, code adjustments and comments" />
+    <MESSAGE value="Added Main Menu Print Options &amp; Selections" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Main Menu Print Options &amp; Selections" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
