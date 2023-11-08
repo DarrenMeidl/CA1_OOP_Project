@@ -158,11 +158,6 @@ public class Activities {
         System.out.printf("AVERAGE CALORIES BURNED ACROSS ALL ACTIVITIES IS: %.3f\n", avgCalBurned);
     }
 
-
-    /*//BINARY SEARCH METHOD
-    public int binarySearchByActivityType(Activity key) { //Method for binary search which is called in the main app and requires a key to be found
-        return Collections.binarySearch(activityList, key); //Binary search is searching through the activitylist, tries to find the key and uses the ActivityTypeComparator to compare it
-    }*/
     //BINARY SEARCH METHOD
     public int binarySearchByDate(LocalDate searchDate) {
         //Comparator<Activity> comparator = (act1, act2) -> act1.getDate().compareTo(searchDate);
