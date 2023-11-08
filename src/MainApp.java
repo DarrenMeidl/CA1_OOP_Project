@@ -22,7 +22,7 @@ public class MainApp {
         //MAIN MENU
         boolean userHasQuit = false;
         while (!userHasQuit) {
-            //Prints Menu
+            //PRINTS MAIN MENU
             System.out.println("\n--- ACTIVITIES MAIN MENU ---");
             System.out.println("1. Print All Activities");
             System.out.println("2. Add Activity");
@@ -32,49 +32,147 @@ public class MainApp {
             System.out.println("6. Binary Search");
             System.out.println("7. Quit");
             System.out.print("Enter the number of your selection: ");
-            //User Select
+            //USER SELECT
             int selection = keyboard.nextInt();
             keyboard.nextLine();
 
 
 
-            //1. Print All Activities
+            //1. PRINT ALL ACTIVITIES
             if (selection == 1){
                 activities.printList();
             }
 
 
 
-            //2. Add Activity
-            if (selection == 2){
+            //2. ADD ACTIVITY
+            else if (selection == 2){
 
             }
 
 
 
-            //3. Sort Activities
-            if (selection == 3){
+            //3. SORT ACTIVITIES
+            else if (selection == 3){
+                boolean sortActivities = true;
+                while(sortActivities) {
+                    //PRINTS SORTING MENU
+                    System.out.println("\n--- SORT ACTIVITIES ---");
+                    System.out.println("1. Natural Order");
+                    System.out.println("2. Calories Burned (Descending)");
+                    System.out.println("3. Duration (Ascending)");
+                    System.out.println("4. Duration (Descending)");
+                    System.out.println("5. Date (Ascending)");
+                    System.out.println("6. Date (Descending)");
+                    System.out.println("7. Distance (Ascending)");
+                    System.out.println("8. Distance (Descending)");
+                    System.out.println("9. Activity Type");
+                    System.out.println("10. Quit");
+                    System.out.print("Enter the number of your selection: ");
+                    //USER SELECT
+                    int sortActivitiesSelect = keyboard.nextInt();
+                    keyboard.nextLine();
 
+                    //1. Natural Order
+                    if (sortActivitiesSelect == 1){
+                        //Natural Order method
+                    }
+                    else if (sortActivitiesSelect == 2){
+                        //Calories Burned Descending method
+                    }
+
+                    //etc.
+
+                    else if(sortActivitiesSelect == 10){
+                        sortActivities = false;
+                    }
+                    else{
+                        System.out.println("INVALID INPUT. TRY AGAIN.");
+                        System.out.println("");
+                    }
+
+                }
             }
 
 
 
-            //4. View Subset of Activities
-            if (selection == 4){
+            //4. VIEW SUBSET OF ACTIVITIES
+            else if (selection == 4){
+                boolean subsetActivities = true;
+                while(subsetActivities) {
+                    //PRINTS SUBSET ACTIVITIES MENU
+                    System.out.println("\n--- VIEW SUBSET OF ACTIVITIES ---");
+                    System.out.println("1. Activity Type");
+                    System.out.println("2. Above Minimum Distance");
+                    System.out.println("3. Energy Expended Type");
+                    System.out.println("4. Above Minimum Duration");
+                    System.out.println("5. Quit");
+                    System.out.print("Enter the number of your selection: ");
+                    //USER SELECT
+                    int subsetActivitiesSelect = keyboard.nextInt();
+                    keyboard.nextLine();
 
+                    //1. Activity Type
+                    if (subsetActivitiesSelect == 1){
+                        //Activity Type method
+                    }
+                    //2. Above Minimum Distance
+                    else if (subsetActivitiesSelect == 2){
+                        //Above Minimum Distance method
+                    }
+
+                    //etc.
+
+                    //5. Quit
+                    else if(subsetActivitiesSelect == 5){
+                        subsetActivities = false;
+                    }
+                    else{
+                        System.out.println("INVALID INPUT. TRY AGAIN.");
+                        System.out.println("");
+                    }
+                }
             }
 
 
 
-            //5. View Statistics
-            if (selection == 5){
+            //5. VIEW STATISTICS
+            else if (selection == 5){
+                boolean viewStatistics = true;
+                while(viewStatistics) {
+                    //PRINTS STATISTICS MENU
+                    System.out.println("\n--- VIEW STATISTICS ---");
+                    System.out.println("1. Average Distance Per Activity");
+                    System.out.println("2. Average Calories Burned");
+                    System.out.println("3. Quit");
+                    System.out.print("Enter the number of your selection: ");
+                    //USER SELECT
+                    int viewStatisticsSelect = keyboard.nextInt();
+                    keyboard.nextLine();
 
+                    //1. Average Distance Per Activity
+                    if (viewStatisticsSelect == 1){
+                        //Average Distance Per Activity method
+                    }
+                    //2. Average Calories Burned
+                    else if (viewStatisticsSelect == 2){
+                        //Average Calories Burned method
+                    }
+                    //3. Quit
+                    else if(viewStatisticsSelect == 3){
+                        viewStatistics = false;
+                    }
+                    else{
+                        System.out.println("INVALID INPUT. TRY AGAIN.");
+                        System.out.println("");
+                    }
+                }
             }
 
 
 
-            //6. Binary Search
-            if (selection == 6){
+            //6. BINARY SEARCH
+            else if (selection == 6){
                 //BINARY SEARCH
                 String fileName = "activity_data_10.csv"; //Reference to the cvs file
                 File file = new File(fileName);
@@ -84,6 +182,7 @@ public class MainApp {
                     }
                     //Reads lines if there are any, makes them strings and creates string instances for each variable
                     while (sc.hasNextLine()) {
+                        //READING FILE
                         String line = sc.nextLine();             //Reads full line based on \n
                         String[] instances = line.split(",");  //Setting comma as a separator in a line
 
@@ -132,7 +231,7 @@ public class MainApp {
                     } else {
                         System.out.println("Activity not found.");
                     }
-            /*Activity key = new Activity("Swimming", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
+                /*Activity key = new Activity("Swimming", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
 
             //Start binarysearch method in activities based on the key wanted
             int index = activities.binarySearchByActivityType(key);
@@ -149,9 +248,13 @@ public class MainApp {
 
 
 
-            //7. Quit
-            if (selection == 7){
+            //7. QUIT
+            else if (selection == 7){
                 userHasQuit = true;
+            }
+            else{
+                System.out.println("INVALID INPUT. TRY AGAIN.");
+                System.out.println("");
             }
         }
 

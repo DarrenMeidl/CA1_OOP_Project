@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="Added Main Menu Print Options &amp; Selections">
+    <list default="true" id="807952dd-4fa8-4dcf-85a5-3fe4533c3ca1" name="Changes" comment="Added Binary Search to Main Menu Option 6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainApp.java" afterDir="false" />
     </list>
@@ -159,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699459140335</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added Binary Search to Main Menu Option 6">
+      <option name="closed" value="true" />
+      <created>1699459768623</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699459768623</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +186,8 @@
     <MESSAGE value="Coded calculateAverageCaloriesBurned() method" />
     <MESSAGE value="Revamp of some comparators to add variety, code adjustments and comments" />
     <MESSAGE value="Added Main Menu Print Options &amp; Selections" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Main Menu Print Options &amp; Selections" />
+    <MESSAGE value="Added Binary Search to Main Menu Option 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Binary Search to Main Menu Option 6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
