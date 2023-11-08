@@ -7,18 +7,12 @@ import java.util.Scanner;
 //MainApp Class
 public class MainApp {
     public static void main(String[] args) {
-        //User's input fields
-        String inputTest1 = "cycling";
-        double inputTest2 = 5;
-        String inputTest3 = "Vigorous";
-        double inputTest4 = 100;
-
         Activities activities = new Activities(); //Creates a reference to a new activities object
 
         Scanner keyboard = new Scanner(System.in); //Creates reference to new Scanner object
 
         //READING CSV FILE
-        String fileName = "activity_data_10.csv"; //Reference to the cvs file
+        String fileName = "activity_data_10.csv"; //Reference to the cvs file *we used the 10 sample test data file, possible to change to a different file with more data if needed
         File file = new File(fileName);
         try (Scanner sc = new Scanner(file)) {
             if (sc.hasNextLine()) {
