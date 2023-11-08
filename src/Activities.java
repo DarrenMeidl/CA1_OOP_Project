@@ -19,12 +19,13 @@ public class Activities {
     public void add(Activity act){
         activityList.add(act);
     }
+
+
+
     //SORT: NATURAL ORDERING - Darren
     public void sort(){
         Collections.sort(activityList); //Sorts by natural ordering - Darren
     }
-
-
     //SORT: CALORIES BURNED
     public void sortByCaloriesBurnedDescending(){
         Collections.sort(activityList, new CaloriesBurnedDescendingComparator());
@@ -162,7 +163,7 @@ public class Activities {
     public int binarySearchByActivityType(Activity key) { //Method for binary search which is called in the main app and requires a key to be found
         return Collections.binarySearch(activityList, key); //Binary search is searching through the activitylist, tries to find the key and uses the ActivityTypeComparator to compare it
     }*/
-
+    //BINARY SEARCH METHOD
     public int binarySearchByDate(LocalDate searchDate) {
         //Comparator<Activity> comparator = (act1, act2) -> act1.getDate().compareTo(searchDate);
         Activity key = new Activity("", 0, searchDate, 0, 0); //Set up the key with a value user wants to find
