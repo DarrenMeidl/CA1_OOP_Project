@@ -19,6 +19,54 @@ public class MainApp {
         Activities activities = new Activities(); //Creates a refernce to a new activities object
 
         Scanner keyboard = new Scanner(System.in); //Creates reference to new Scanner object
+
+        //READING CSV FILE
+        String fileName = "activity_data_10.csv"; //Reference to the cvs file
+        File file = new File(fileName);
+        try (Scanner sc = new Scanner(file)) {
+            if (sc.hasNextLine()) {
+                sc.nextLine();   //"Consume" the header by reading it and not using it further
+            }
+            //Reads lines if there are any, makes them strings and creates string instances for each variable
+            while (sc.hasNextLine()) {
+                //READING FILE
+                String line = sc.nextLine();             //Reads full line based on \n
+                String[] instances = line.split(",");  //Setting comma as a separator in a line
+
+                String type = instances[0];  //Separating each instance of a string from the file into a variable for each row and column
+                LocalDate date = LocalDate.parse(instances[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));  //Formatting date as in the file, using trim to remove unwanted spaces
+                double duration = Double.parseDouble(instances[2]);
+                double distance = Double.parseDouble(instances[3]);
+                int avgHeartRate = Integer.parseInt(instances[4].trim()); //Trims it because of unwanted space of the string before parsing as integer
+                /*//Use format specifiers to print the values
+                System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code (File output)
+                        type, date, duration, distance, avgHeartRate);*/
+                Activity activity = new Activity(type, duration, date, distance, avgHeartRate); //Create instance of activities from the file
+                activity.calculateEnergyExpended(distance, duration);
+                activity.calculateCaloriesBurned(activity.getIntensity(), duration);
+                boolean duplicate = false;
+                //CHECKING FOR DUPLICATES LOOP
+                for (int i = 0; i < activities.activityList.size(); i++) {
+                    Activity arrayactivity = activities.activityList.get(i);
+                    //If a duplicate is found
+                    if (arrayactivity.getType().equals(activity.getType()) && //If the types of previous activities are equal and other conditions equal... set it as duplicate
+                            arrayactivity.getDate().equals(activity.getDate()) &&
+                            arrayactivity.getDuration() == activity.getDuration() &&
+                            arrayactivity.getDistance() == activity.getDistance() &&
+                            arrayactivity.getAvgHeartRate() == activity.getAvgHeartRate()) {
+                        duplicate = true; //If all the above equal, set the duplicate boolean as true
+                        System.out.println("DUPLICATE FOUND");
+                        break;
+                    }
+                }
+                //If a duplicate isn't found
+                if (!duplicate) {
+                    activities.add(activity); //If the above values are not duplicate, add the activity to the arraylist
+                }
+            }
+        }   catch(FileNotFoundException e){
+                System.out.println("File not found: " + fileName); //Prints out when file was not found
+            }
         //MAIN MENU
         boolean userHasQuit = false;
         while (!userHasQuit) {
@@ -37,34 +85,32 @@ public class MainApp {
             keyboard.nextLine();
 
 
-
             //1. PRINT ALL ACTIVITIES
-            if (selection == 1){
+            if (selection == 1) {
                 activities.printList();
             }
 
 
-
             //2. ADD ACTIVITY
-            else if (selection == 2){
+            else if (selection == 2) {
                 boolean addActivity = true;
-                while (addActivity){
+                while (addActivity) {
                     System.out.print("Add your own activity fields? [Y/N]: ");
                     String userInput = keyboard.nextLine();
                     //IF NO, ADD OBJECT WITH DEFAULT CONSTRUCTOR
-                    if(userInput.equalsIgnoreCase("n")){
+                    if (userInput.equalsIgnoreCase("n")) {
                         Activity newActivity = new Activity();
                         activities.add(newActivity);
                         System.out.println("Added Default Activity");
                         //CHECK IF YOU WANT TO ADD ANOTHER ACTIVITY
                         System.out.print("Do you want to add another activity? [Y/N]: ");
                         String input = keyboard.nextLine();
-                        if (input.equalsIgnoreCase("n")){
+                        if (input.equalsIgnoreCase("n")) {
                             addActivity = false;
                         }
                     }
                     //IF YES, USER ENTERS THEIR OWN FIELDS
-                    else if(userInput.equalsIgnoreCase("y")){
+                    else if (userInput.equalsIgnoreCase("y")) {
                         System.out.print("Enter Activity Type: ");
                         String inputType = keyboard.nextLine();
                         System.out.print("Enter Date (YYYY-MM-DD): ");
@@ -80,7 +126,7 @@ public class MainApp {
                         activities.add(newActivity);
                     }
                     //OTHERWISE, TRY AGAIN
-                    else{
+                    else {
                         System.out.println("INVALID INPUT. TRY AGAIN.");
                         System.out.println("");
                     }
@@ -88,11 +134,10 @@ public class MainApp {
             }
 
 
-
             //3. SORT ACTIVITIES
-            else if (selection == 3){
+            else if (selection == 3) {
                 boolean sortActivities = true;
-                while(sortActivities) {
+                while (sortActivities) {
                     //PRINTS SORTING MENU
                     System.out.println("\n--- SORT ACTIVITIES ---");
                     System.out.println("1. Natural Order");
@@ -111,19 +156,20 @@ public class MainApp {
                     keyboard.nextLine();
 
                     //1. Natural Order
-                    if (sortActivitiesSelect == 1){
+                    if (sortActivitiesSelect == 1) {
                         //Natural Order method
                     }
-                    else if (sortActivitiesSelect == 2){
+                    //2. Calories Burned Descending
+                    else if (sortActivitiesSelect == 2) {
                         //Calories Burned Descending method
                     }
 
                     //etc.
 
-                    else if(sortActivitiesSelect == 10){
+                    //10. Quit
+                    else if (sortActivitiesSelect == 10) {
                         sortActivities = false;
-                    }
-                    else{
+                    } else {
                         System.out.println("INVALID INPUT. TRY AGAIN.");
                         System.out.println("");
                     }
@@ -132,11 +178,10 @@ public class MainApp {
             }
 
 
-
             //4. VIEW SUBSET OF ACTIVITIES
-            else if (selection == 4){
+            else if (selection == 4) {
                 boolean subsetActivities = true;
-                while(subsetActivities) {
+                while (subsetActivities) {
                     //PRINTS SUBSET ACTIVITIES MENU
                     System.out.println("\n--- VIEW SUBSET OF ACTIVITIES ---");
                     System.out.println("1. Activity Type");
@@ -150,21 +195,20 @@ public class MainApp {
                     keyboard.nextLine();
 
                     //1. Activity Type
-                    if (subsetActivitiesSelect == 1){
+                    if (subsetActivitiesSelect == 1) {
                         //Activity Type method
                     }
                     //2. Above Minimum Distance
-                    else if (subsetActivitiesSelect == 2){
+                    else if (subsetActivitiesSelect == 2) {
                         //Above Minimum Distance method
                     }
 
                     //etc.
 
                     //5. Quit
-                    else if(subsetActivitiesSelect == 5){
+                    else if (subsetActivitiesSelect == 5) {
                         subsetActivities = false;
-                    }
-                    else{
+                    } else {
                         System.out.println("INVALID INPUT. TRY AGAIN.");
                         System.out.println("");
                     }
@@ -172,11 +216,10 @@ public class MainApp {
             }
 
 
-
             //5. VIEW STATISTICS
-            else if (selection == 5){
+            else if (selection == 5) {
                 boolean viewStatistics = true;
-                while(viewStatistics) {
+                while (viewStatistics) {
                     //PRINTS STATISTICS MENU
                     System.out.println("\n--- VIEW STATISTICS ---");
                     System.out.println("1. Average Distance Per Activity");
@@ -188,18 +231,17 @@ public class MainApp {
                     keyboard.nextLine();
 
                     //1. Average Distance Per Activity
-                    if (viewStatisticsSelect == 1){
+                    if (viewStatisticsSelect == 1) {
                         //Average Distance Per Activity method
                     }
                     //2. Average Calories Burned
-                    else if (viewStatisticsSelect == 2){
+                    else if (viewStatisticsSelect == 2) {
                         //Average Calories Burned method
                     }
                     //3. Quit
-                    else if(viewStatisticsSelect == 3){
+                    else if (viewStatisticsSelect == 3) {
                         viewStatistics = false;
-                    }
-                    else{
+                    } else {
                         System.out.println("INVALID INPUT. TRY AGAIN.");
                         System.out.println("");
                     }
@@ -207,67 +249,22 @@ public class MainApp {
             }
 
 
-
             //6. BINARY SEARCH
-            else if (selection == 6){
-                //BINARY SEARCH
-                String fileName = "activity_data_10.csv"; //Reference to the cvs file
-                File file = new File(fileName);
-                try (Scanner sc = new Scanner(file)) {
-                    if (sc.hasNextLine()) {
-                        sc.nextLine();   //"Consume" the header by reading it and not using it further
-                    }
-                    //Reads lines if there are any, makes them strings and creates string instances for each variable
-                    while (sc.hasNextLine()) {
-                        //READING FILE
-                        String line = sc.nextLine();             //Reads full line based on \n
-                        String[] instances = line.split(",");  //Setting comma as a separator in a line
-
-                        String type = instances[0];  //Separating each instance of a string from the file into a variable for each row and column
-                        LocalDate date = LocalDate.parse(instances[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));  //Formatting date as in the file, using trim to remove unwanted spaces
-                        double duration = Double.parseDouble(instances[2]);
-                        double distance = Double.parseDouble(instances[3]);
-                        int avgHeartRate = Integer.parseInt(instances[4].trim()); //Trims it because of unwanted space of the string before parsing as integer
-                /*//Use format specifiers to print the values
-                System.out.printf("%-20s %5s %7.2f %7.2f %7d%n", //Formatting for the file output in the code (File output)
-                        type, date, duration, distance, avgHeartRate);*/
-                        Activity activity = new Activity(type, duration, date, distance, avgHeartRate); //Create instance of activities from the file
-                        activity.calculateEnergyExpended(distance, duration);
-                        activity.calculateCaloriesBurned(activity.getIntensity(), duration);
-                        boolean duplicate = false;
-                        //CHECKING FOR DUPLICATES LOOP
-                        for (int i = 0; i < activities.activityList.size(); i++) {
-                            Activity arrayactivity = activities.activityList.get(i);
-                            //If a duplicate is found
-                            if (arrayactivity.getType().equals(activity.getType()) && //If the types of previous activities are equal and other conditions equal... set it as duplicate
-                                    arrayactivity.getDate().equals(activity.getDate()) &&
-                                    arrayactivity.getDuration() == activity.getDuration() &&
-                                    arrayactivity.getDistance() == activity.getDistance() &&
-                                    arrayactivity.getAvgHeartRate() == activity.getAvgHeartRate()) {
-                                duplicate = true; //If all the above equal, set the duplicate boolean as true
-                                System.out.println("DUPLICATE FOUND");
-                                break;
-                            }
-                        }
-                        //If a duplicate isn't found
-                        if (!duplicate) {
-                            activities.add(activity); //If the above values are not duplicate, add the activity to the arraylist
-                        }
-                    }
-                    //SORT
-                    activities.sortByActivityDateAscending(); //Sorts the list with natural sorting by date, or just activities.sort();
-                    //USER INPUT
-                    System.out.print("Enter Activity Date (YYYY-MM-DD): ");
-                    String userInput = keyboard.nextLine();
-                    //SEARCH
-                    LocalDate searchDate = LocalDate.parse(userInput); //User inputs a date that is going to be found at a index if it exists in the arraylist
-                    int index = activities.binarySearchByDate(searchDate); //Starts the binarysearch based on the date to find the index of it
-                    if (index >= 0) {
-                        Activity indexActivity = activities.activityList.get(index); //gets the info about the activity from the index it was found on
-                        System.out.println("Activity found at index " + index + ": " + indexActivity);
-                    } else {
-                        System.out.println("Activity not found.");
-                    }
+            else if (selection == 6) {
+                //SORT
+                activities.sortByActivityDateAscending(); //Sorts the list with natural sorting by date, or just activities.sort();
+                //USER INPUT
+                System.out.print("Enter Activity Date (YYYY-MM-DD): ");
+                String userInput = keyboard.nextLine();
+                //SEARCH
+                LocalDate searchDate = LocalDate.parse(userInput); //User inputs a date that is going to be found at a index if it exists in the arraylist
+                int index = activities.binarySearchByDate(searchDate); //Starts the binarysearch based on the date to find the index of it
+                if (index >= 0) {
+                    Activity indexActivity = activities.activityList.get(index); //gets the info about the activity from the index it was found on
+                    System.out.println("Activity found at index " + index + ": " + indexActivity);
+                } else {
+                    System.out.println("Activity not found.");
+                }
                 /*Activity key = new Activity("Swimming", 0, LocalDate.MIN, 0, 0); //Creates a key which is set to be found in the arraylist
 
             //Start binarysearch method in activities based on the key wanted
@@ -278,22 +275,20 @@ public class MainApp {
             } else {
                 System.out.println("Not found in the list"); //Activates when the key is not found in the arraylist
             }*/
-                }   catch (FileNotFoundException e) {
-                    System.out.println("File not found: " + fileName); //Prints out when file was not found
-                }
             }
 
 
 
-            //7. QUIT
-            else if (selection == 7){
+        //7. QUIT
+            else if (selection == 7) {
                 userHasQuit = true;
             }
-            else{
+            else {
                 System.out.println("INVALID INPUT. TRY AGAIN.");
                 System.out.println("");
             }
         }
+
 
 
 
